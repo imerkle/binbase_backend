@@ -1,5 +1,7 @@
 # BinbaseBackend
 
+[![Build Status](https://travis-ci.com/imerkle/binbase_backend.svg?branch=master)](https://travis-ci.com/imerkle/binbase_backend)
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
