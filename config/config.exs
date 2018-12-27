@@ -29,6 +29,10 @@ config :phoenix, :json_library, Jason
 import_config "adjectives.exs"
 import_config "nouns.exs"
 
+config :binbase_backend,
+  hashid_salt: "bhd7i7FPegcSqHlWxews",
+  phx_token_salt: "user salt"
+  
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
