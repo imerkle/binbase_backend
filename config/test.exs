@@ -19,4 +19,6 @@ config :binbase_backend, BinbaseBackend.Repo,
 
 config :argon2_elixir, t_cost: 2, m_cost: 8
 
-import_config "test.secret.exs"
+if !System.get_env(“TRAVIS”) do
+  import_config "test.secret.exs"
+end
