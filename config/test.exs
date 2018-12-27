@@ -12,7 +12,7 @@ config :logger, level: :warn
 # Configure your database
 config :binbase_backend, BinbaseBackend.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "",
   database: "binbase_backend_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
