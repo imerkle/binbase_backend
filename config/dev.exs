@@ -55,6 +55,6 @@ config :binbase_backend, BinbaseBackend.Repo,
   hostname: "localhost",
   pool_size: 10
 
-if !System.get_env(“TRAVIS”) do
+if !System.get_env("TRAVIS") do
   import_config "dev.secret.exs"
 end
