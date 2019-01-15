@@ -49,6 +49,8 @@ defmodule BinbaseBackend.MixProject do
       {:hashids, "~> 2.0"},
       {:haikunator, git: "https://github.com/imerkle/haikunator.git"},
       {:omni, git: "https://github.com/imerkle/omni.git"},
+      {:amqp, "~> 1.1"},
+      {:ranch, "~> 1.6.2", override: true},      
     ]
   end
 

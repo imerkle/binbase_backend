@@ -1,7 +1,7 @@
 defmodule BinbaseBackendWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :binbase_backend
 
-  socket "/socket", BinbaseBackendWeb.UserSocket,
+  socket "/socket", BinbaseBackendWeb.MainSocket,
     websocket: true,
     longpoll: false
 

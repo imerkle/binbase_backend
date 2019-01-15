@@ -1,0 +1,363 @@
+2019-01-13 00:43:34 =CRASH REPORT====
+  crasher:
+    initial call: supervisor:Elixir.BinbaseBackend.MainSupervisor/1
+    pid: <0.378.0>
+    registered_name: []
+    exception error: {function_clause,[{'Elixir.BinbaseBackend.MainSupervisor',init,[[]],[{file,"lib/binbase_backend/supervisor.ex"},{line,21}]},{supervisor,init,1,[{file,"supervisor.erl"},{line,295}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: ['Elixir.BinbaseBackend.Supervisor',<0.376.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.377.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 376
+    stack_size: 27
+    reductions: 253
+  neighbours:
+2019-01-13 00:43:34 =SUPERVISOR REPORT====
+     Supervisor: {local,'Elixir.BinbaseBackend.Supervisor'}
+     Context:    start_error
+     Reason:     {function_clause,[{'Elixir.BinbaseBackend.MainSupervisor',init,[[]],[{file,"lib/binbase_backend/supervisor.ex"},{line,21}]},{supervisor,init,1,[{file,"supervisor.erl"},{line,295}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+     Offender:   [{pid,undefined},{id,'Elixir.BinbaseBackend.MainSupervisor'},{mfargs,{'Elixir.BinbaseBackend.MainSupervisor',start_link,[[]]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-01-13 00:43:34 =CRASH REPORT====
+  crasher:
+    initial call: application_master:init/4
+    pid: <0.375.0>
+    registered_name: []
+    exception exit: {{{shutdown,{failed_to_start_child,'Elixir.BinbaseBackend.MainSupervisor',{function_clause,[{'Elixir.BinbaseBackend.MainSupervisor',init,[[]],[{file,"lib/binbase_backend/supervisor.ex"},{line,21}]},{supervisor,init,1,[{file,"supervisor.erl"},{line,295}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}}},{'Elixir.BinbaseBackend.Application',start,[normal,[]]}},[{application_master,init,4,[{file,"application_master.erl"},{line,138}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.374.0>]
+    message_queue_len: 1
+    messages: [{'EXIT',<0.376.0>,normal}]
+    links: [<0.374.0>,<0.43.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 987
+    stack_size: 27
+    reductions: 228
+  neighbours:
+2019-01-13 02:03:39 =CRASH REPORT====
+  crasher:
+    initial call: rabbit_writer:enter_mainloop/2
+    pid: <0.476.0>
+    registered_name: []
+    exception error: {function_clause,[{lists,reverse,[#{'__meta__' => #{'__struct__' => 'Elixir.Ecto.Schema.Metadata',context => nil,prefix => nil,schema => 'Elixir.BinbaseBackend.Order',source => <<"orders">>,state => loaded},'__struct__' => 'Elixir.BinbaseBackend.Order',amount => 500.0,id => 1,inserted_at => #{'__struct__' => 'Elixir.NaiveDateTime',calendar => 'Elixir.Calendar.ISO',day => 12,hour => 20,microsecond => {0,0},minute => 33,month => 1,second => 39,year => 2019},kind => 0,maker_id => 4,price => 3854.0,stop_price => nil,token_base => <<"USDT">>,token_rel => <<"BTC">>,updated_at => #{'__struct__' => 'Elixir.NaiveDateTime',calendar => 'Elixir.Calendar.ISO',day => 12,hour => 20,microsecond => {0,0},minute => 33,month => 1,second => 39,year => 2019}}],[{file,"lists.erl"},{line,147}]},{rabbit_binary_generator,build_content_frames,3,[{file,"/home/slim/gitRepos/binbase_backend/deps/rabbit_common/src/rabbit_binary_generator.erl"},{line,81}]},{rabbit_binary_generator,build_simple_content_frames,4,[{file,"/home/slim/gitRepos/binbase_backend/deps/rabbit_common/src/rabbit_binary_generator.erl"},{line,70}]},{rabbit_writer,assemble_frames,5,[{file,"/home/slim/gitRepos/binbase_backend/deps/rabbit_common/src/rabbit_writer.erl"},{line,311}]},{rabbit_writer,internal_send_command_async,3,[{file,"/home/slim/gitRepos/binbase_backend/deps/rabbit_common/src/rabbit_writer.erl"},{line,341}]},{rabbit_writer,handle_message,3,[{file,"/home/slim/gitRepos/binbase_backend/deps/rabbit_common/src/rabbit_writer.erl"},{line,209}]},{rabbit_writer,mainloop1,2,[{file,"/home/slim/gitRepos/binbase_backend/deps/rabbit_common/src/rabbit_writer.erl"},{line,193}]},{rabbit_writer,mainloop,2,[{file,"/home/slim/gitRepos/binbase_backend/deps/rabbit_common/src/rabbit_writer.erl"},{line,184}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.473.0>,<0.467.0>,<0.465.0>,<0.464.0>,amqp_sup,<0.415.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.473.0>]
+    dictionary: [{process_name,{rabbit_writer,{<<"client 127.0.0.1:44513 -> 127.0.0.1:5672">>,1}}}]
+    trap_exit: false
+    status: running
+    heap_size: 1598
+    stack_size: 27
+    reductions: 586
+  neighbours:
+2019-01-13 02:03:39 =SUPERVISOR REPORT====
+     Supervisor: {<0.473.0>,amqp_channel_sup}
+     Context:    child_terminated
+     Reason:     {function_clause,[{lists,reverse,[#{'__meta__' => #{'__struct__' => 'Elixir.Ecto.Schema.Metadata',context => nil,prefix => nil,schema => 'Elixir.BinbaseBackend.Order',source => <<"orders">>,state => loaded},'__struct__' => 'Elixir.BinbaseBackend.Order',amount => 500.0,id => 1,inserted_at => #{'__struct__' => 'Elixir.NaiveDateTime',calendar => 'Elixir.Calendar.ISO',day => 12,hour => 20,microsecond => {0,0},minute => 33,month => 1,second => 39,year => 2019},kind => 0,maker_id => 4,price => 3854.0,stop_price => nil,token_base => <<"USDT">>,token_rel => <<"BTC">>,updated_at => #{'__struct__' => 'Elixir.NaiveDateTime',calendar => 'Elixir.Calendar.ISO',day => 12,hour => 20,microsecond => {0,0},minute => 33,month => 1,second => 39,year => 2019}}],[{file,"lists.erl"},{line,147}]},{rabbit_binary_generator,build_content_frames,3,[{file,"/home/slim/gitRepos/binbase_backend/deps/rabbit_common/src/rabbit_binary_generator.erl"},{line,81}]},{rabbit_binary_generator,build_simple_content_frames,4,[{file,"/home/slim/gitRepos/binbase_backend/deps/rabbit_common/src/rabbit_binary_generator.erl"},{line,70}]},{rabbit_writer,assemble_frames,5,[{file,"/home/slim/gitRepos/binbase_backend/deps/rabbit_common/src/rabbit_writer.erl"},{line,311}]},{rabbit_writer,internal_send_command_async,3,[{file,"/home/slim/gitRepos/binbase_backend/deps/rabbit_common/src/rabbit_writer.erl"},{line,341}]},{rabbit_writer,handle_message,3,[{file,"/home/slim/gitRepos/binbase_backend/deps/rabbit_common/src/rabbit_writer.erl"},{line,209}]},{rabbit_writer,mainloop1,2,[{file,"/home/slim/gitRepos/binbase_backend/deps/rabbit_common/src/rabbit_writer.erl"},{line,193}]},{rabbit_writer,mainloop,2,[{file,"/home/slim/gitRepos/binbase_backend/deps/rabbit_common/src/rabbit_writer.erl"},{line,184}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+     Offender:   [{pid,<0.476.0>},{name,writer},{mfargs,{rabbit_writer,start_link,[#Port<0.107>,1,131072,rabbit_framing_amqp_0_9_1,<0.475.0>,{<<"client 127.0.0.1:44513 -> 127.0.0.1:5672">>,1}]}},{restart_type,transient},{shutdown,30000},{child_type,worker}]
+
+2019-01-13 02:03:39 =SUPERVISOR REPORT====
+     Supervisor: {<0.473.0>,amqp_channel_sup}
+     Context:    shutdown
+     Reason:     reached_max_restart_intensity
+     Offender:   [{pid,<0.476.0>},{name,writer},{mfargs,{rabbit_writer,start_link,[#Port<0.107>,1,131072,rabbit_framing_amqp_0_9_1,<0.475.0>,{<<"client 127.0.0.1:44513 -> 127.0.0.1:5672">>,1}]}},{restart_type,transient},{shutdown,30000},{child_type,worker}]
+
+2019-01-13 20:55:42 =CRASH REPORT====
+  crasher:
+    initial call: application_master:init/4
+    pid: <0.445.0>
+    registered_name: []
+    exception exit: {{{shutdown,{failed_to_start_child,'Elixir.BinbaseBackend.MainSupervisor',{shutdown,{failed_to_start_child,'Elixir.BinbaseBackend.Engine.Listener',{undef,[{'Elixir.AMQPqueue.Queue',declare,[#{'__struct__' => 'Elixir.AMQP.Channel',conn => #{'__struct__' => 'Elixir.AMQP.Connection',pid => <0.486.0>},pid => <0.495.0>},<<"binbase_backend.queue">>,[{durable,false}]],[]},{'Elixir.BinbaseBackend.Engine.Listener',init,1,[{file,"lib/binbase_backend/engine/listener.ex"},{line,59}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}}}}},{'Elixir.BinbaseBackend.Application',start,[normal,[]]}},[{application_master,init,4,[{file,"application_master.erl"},{line,138}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.444.0>]
+    message_queue_len: 1
+    messages: [{'EXIT',<0.446.0>,normal}]
+    links: [<0.444.0>,<0.43.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 610
+    stack_size: 27
+    reductions: 222
+  neighbours:
+2019-01-14 21:28:01 =CRASH REPORT====
+  crasher:
+    initial call: rabbit_writer:enter_mainloop/2
+    pid: <0.481.0>
+    registered_name: []
+    exception error: {function_clause,[{lists,reverse,[#{data => <<"me msg">>,type => <<"event">>}],[{file,"lists.erl"},{line,147}]},{rabbit_binary_generator,build_content_frames,3,[{file,"/home/slim/gitRepos/binbase_backend/deps/rabbit_common/src/rabbit_binary_generator.erl"},{line,81}]},{rabbit_binary_generator,build_simple_content_frames,4,[{file,"/home/slim/gitRepos/binbase_backend/deps/rabbit_common/src/rabbit_binary_generator.erl"},{line,70}]},{rabbit_writer,assemble_frames,5,[{file,"/home/slim/gitRepos/binbase_backend/deps/rabbit_common/src/rabbit_writer.erl"},{line,311}]},{rabbit_writer,internal_send_command_async,3,[{file,"/home/slim/gitRepos/binbase_backend/deps/rabbit_common/src/rabbit_writer.erl"},{line,341}]},{rabbit_writer,handle_message,3,[{file,"/home/slim/gitRepos/binbase_backend/deps/rabbit_common/src/rabbit_writer.erl"},{line,209}]},{rabbit_writer,mainloop1,2,[{file,"/home/slim/gitRepos/binbase_backend/deps/rabbit_common/src/rabbit_writer.erl"},{line,193}]},{rabbit_writer,mainloop,2,[{file,"/home/slim/gitRepos/binbase_backend/deps/rabbit_common/src/rabbit_writer.erl"},{line,184}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.478.0>,<0.472.0>,<0.470.0>,<0.469.0>,amqp_sup,<0.420.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.478.0>]
+    dictionary: [{process_name,{rabbit_writer,{<<"client 127.0.0.1:34059 -> 127.0.0.1:5672">>,1}}}]
+    trap_exit: false
+    status: running
+    heap_size: 1598
+    stack_size: 27
+    reductions: 567
+  neighbours:
+2019-01-14 21:28:01 =SUPERVISOR REPORT====
+     Supervisor: {<0.478.0>,amqp_channel_sup}
+     Context:    child_terminated
+     Reason:     {function_clause,[{lists,reverse,[#{data => <<"me msg">>,type => <<"event">>}],[{file,"lists.erl"},{line,147}]},{rabbit_binary_generator,build_content_frames,3,[{file,"/home/slim/gitRepos/binbase_backend/deps/rabbit_common/src/rabbit_binary_generator.erl"},{line,81}]},{rabbit_binary_generator,build_simple_content_frames,4,[{file,"/home/slim/gitRepos/binbase_backend/deps/rabbit_common/src/rabbit_binary_generator.erl"},{line,70}]},{rabbit_writer,assemble_frames,5,[{file,"/home/slim/gitRepos/binbase_backend/deps/rabbit_common/src/rabbit_writer.erl"},{line,311}]},{rabbit_writer,internal_send_command_async,3,[{file,"/home/slim/gitRepos/binbase_backend/deps/rabbit_common/src/rabbit_writer.erl"},{line,341}]},{rabbit_writer,handle_message,3,[{file,"/home/slim/gitRepos/binbase_backend/deps/rabbit_common/src/rabbit_writer.erl"},{line,209}]},{rabbit_writer,mainloop1,2,[{file,"/home/slim/gitRepos/binbase_backend/deps/rabbit_common/src/rabbit_writer.erl"},{line,193}]},{rabbit_writer,mainloop,2,[{file,"/home/slim/gitRepos/binbase_backend/deps/rabbit_common/src/rabbit_writer.erl"},{line,184}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+     Offender:   [{pid,<0.481.0>},{name,writer},{mfargs,{rabbit_writer,start_link,[#Port<0.109>,1,131072,rabbit_framing_amqp_0_9_1,<0.480.0>,{<<"client 127.0.0.1:34059 -> 127.0.0.1:5672">>,1}]}},{restart_type,transient},{shutdown,30000},{child_type,worker}]
+
+2019-01-14 21:28:01 =SUPERVISOR REPORT====
+     Supervisor: {<0.478.0>,amqp_channel_sup}
+     Context:    shutdown
+     Reason:     reached_max_restart_intensity
+     Offender:   [{pid,<0.481.0>},{name,writer},{mfargs,{rabbit_writer,start_link,[#Port<0.109>,1,131072,rabbit_framing_amqp_0_9_1,<0.480.0>,{<<"client 127.0.0.1:34059 -> 127.0.0.1:5672">>,1}]}},{restart_type,transient},{shutdown,30000},{child_type,worker}]
+
+2019-01-16 02:54:34 =CRASH REPORT====
+  crasher:
+    initial call: Elixir.BinbaseBackend.Engine.Broadcaster:init/1
+    pid: <0.3316.0>
+    registered_name: []
+    exception error: {{badmatch,{error,econnrefused}},[{'Elixir.BinbaseBackend.Engine.Broadcaster',init,1,[{file,"lib/binbase_backend/engine/broadcaster.ex"},{line,45}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: ['Elixir.BinbaseBackend.MainSupervisor','Elixir.BinbaseBackend.Supervisor',<0.3294.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.3296.0>]
+    dictionary: [{gen_server_call_timeout,60000}]
+    trap_exit: false
+    status: running
+    heap_size: 376
+    stack_size: 27
+    reductions: 628
+  neighbours:
+2019-01-16 02:54:34 =SUPERVISOR REPORT====
+     Supervisor: {local,'Elixir.BinbaseBackend.MainSupervisor'}
+     Context:    start_error
+     Reason:     {{badmatch,{error,econnrefused}},[{'Elixir.BinbaseBackend.Engine.Broadcaster',init,1,[{file,"lib/binbase_backend/engine/broadcaster.ex"},{line,45}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+     Offender:   [{pid,undefined},{id,'Elixir.BinbaseBackend.Engine.Broadcaster'},{mfargs,{'Elixir.BinbaseBackend.Engine.Broadcaster',start_link,[]}},{restart_type,permanent},{shutdown,5000},{child_type,worker}]
+
+2019-01-16 02:54:34 =SUPERVISOR REPORT====
+     Supervisor: {local,'Elixir.BinbaseBackend.Supervisor'}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,'Elixir.BinbaseBackend.Engine.Broadcaster',{{badmatch,{error,econnrefused}},[{'Elixir.BinbaseBackend.Engine.Broadcaster',init,1,[{file,"lib/binbase_backend/engine/broadcaster.ex"},{line,45}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}}}
+     Offender:   [{pid,undefined},{id,'Elixir.BinbaseBackend.MainSupervisor'},{mfargs,{'Elixir.BinbaseBackend.MainSupervisor',start_link,[[]]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-01-16 02:54:34 =CRASH REPORT====
+  crasher:
+    initial call: application_master:init/4
+    pid: <0.3293.0>
+    registered_name: []
+    exception exit: {{{shutdown,{failed_to_start_child,'Elixir.BinbaseBackend.MainSupervisor',{shutdown,{failed_to_start_child,'Elixir.BinbaseBackend.Engine.Broadcaster',{{badmatch,{error,econnrefused}},[{'Elixir.BinbaseBackend.Engine.Broadcaster',init,1,[{file,"lib/binbase_backend/engine/broadcaster.ex"},{line,45}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}}}}},{'Elixir.BinbaseBackend.Application',start,[normal,[]]}},[{application_master,init,4,[{file,"application_master.erl"},{line,138}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.3292.0>]
+    message_queue_len: 1
+    messages: [{'EXIT',<0.3294.0>,normal}]
+    links: [<0.3292.0>,<0.43.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 610
+    stack_size: 27
+    reductions: 224
+  neighbours:
+2019-01-16 02:55:13 =SUPERVISOR REPORT====
+     Supervisor: {local,'Elixir.BinbaseBackend.MainSupervisor'}
+     Context:    start_error
+     Reason:     {{badmatch,{error,econnrefused}},[{'Elixir.BinbaseBackend.Engine.Listener',init,1,[{file,"lib/binbase_backend/engine/listener.ex"},{line,55}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+     Offender:   [{pid,undefined},{id,'Elixir.BinbaseBackend.Engine.Listener'},{mfargs,{'Elixir.BinbaseBackend.Engine.Listener',start_link,[]}},{restart_type,permanent},{shutdown,5000},{child_type,worker}]
+
+2019-01-16 02:55:13 =CRASH REPORT====
+  crasher:
+    initial call: Elixir.BinbaseBackend.Engine.Listener:init/1
+    pid: <0.463.0>
+    registered_name: []
+    exception error: {{badmatch,{error,econnrefused}},[{'Elixir.BinbaseBackend.Engine.Listener',init,1,[{file,"lib/binbase_backend/engine/listener.ex"},{line,55}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: ['Elixir.BinbaseBackend.MainSupervisor','Elixir.BinbaseBackend.Supervisor',<0.440.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.442.0>]
+    dictionary: [{gen_server_call_timeout,60000}]
+    trap_exit: false
+    status: running
+    heap_size: 610
+    stack_size: 27
+    reductions: 632
+  neighbours:
+2019-01-16 02:55:13 =SUPERVISOR REPORT====
+     Supervisor: {local,'Elixir.BinbaseBackend.Supervisor'}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,'Elixir.BinbaseBackend.Engine.Listener',{{badmatch,{error,econnrefused}},[{'Elixir.BinbaseBackend.Engine.Listener',init,1,[{file,"lib/binbase_backend/engine/listener.ex"},{line,55}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}}}
+     Offender:   [{pid,undefined},{id,'Elixir.BinbaseBackend.MainSupervisor'},{mfargs,{'Elixir.BinbaseBackend.MainSupervisor',start_link,[[]]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-01-16 02:55:13 =CRASH REPORT====
+  crasher:
+    initial call: application_master:init/4
+    pid: <0.439.0>
+    registered_name: []
+    exception exit: {{{shutdown,{failed_to_start_child,'Elixir.BinbaseBackend.MainSupervisor',{shutdown,{failed_to_start_child,'Elixir.BinbaseBackend.Engine.Listener',{{badmatch,{error,econnrefused}},[{'Elixir.BinbaseBackend.Engine.Listener',init,1,[{file,"lib/binbase_backend/engine/listener.ex"},{line,55}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}}}}},{'Elixir.BinbaseBackend.Application',start,[normal,[]]}},[{application_master,init,4,[{file,"application_master.erl"},{line,138}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.438.0>]
+    message_queue_len: 1
+    messages: [{'EXIT',<0.440.0>,normal}]
+    links: [<0.438.0>,<0.43.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 987
+    stack_size: 27
+    reductions: 226
+  neighbours:
+2019-01-16 02:55:57 =CRASH REPORT====
+  crasher:
+    initial call: supervisor:Elixir.Phoenix.Endpoint.Supervisor/1
+    pid: <0.479.0>
+    registered_name: []
+    exception error: {undef,[{'Elixir.BinbaseBackendWeb.UserSocket',child_spec,[[{endpoint,'Elixir.BinbaseBackendWeb.Endpoint'},{websocket,true},{longpoll,false}]],[]},{'Elixir.Enum','-map/2-lists^map/1-0-',2,[{file,"lib/enum.ex"},{line,1327}]},{'Elixir.Phoenix.Endpoint.Supervisor',init,1,[{file,"lib/phoenix/endpoint/supervisor.ex"},{line,56}]},{supervisor,init,1,[{file,"supervisor.erl"},{line,295}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: ['Elixir.BinbaseBackend.Supervisor',<0.440.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.441.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 987
+    stack_size: 27
+    reductions: 1077
+  neighbours:
+2019-01-16 02:55:57 =SUPERVISOR REPORT====
+     Supervisor: {local,'Elixir.BinbaseBackend.Supervisor'}
+     Context:    start_error
+     Reason:     {undef,[{'Elixir.BinbaseBackendWeb.UserSocket',child_spec,[[{endpoint,'Elixir.BinbaseBackendWeb.Endpoint'},{websocket,true},{longpoll,false}]],[]},{'Elixir.Enum','-map/2-lists^map/1-0-',2,[{file,"lib/enum.ex"},{line,1327}]},{'Elixir.Phoenix.Endpoint.Supervisor',init,1,[{file,"lib/phoenix/endpoint/supervisor.ex"},{line,56}]},{supervisor,init,1,[{file,"supervisor.erl"},{line,295}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+     Offender:   [{pid,undefined},{id,'Elixir.BinbaseBackendWeb.Endpoint'},{mfargs,{'Elixir.BinbaseBackendWeb.Endpoint',start_link,[[]]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-01-16 02:55:57 =CRASH REPORT====
+  crasher:
+    initial call: application_master:init/4
+    pid: <0.439.0>
+    registered_name: []
+    exception exit: {{{shutdown,{failed_to_start_child,'Elixir.BinbaseBackendWeb.Endpoint',{undef,[{'Elixir.BinbaseBackendWeb.UserSocket',child_spec,[[{endpoint,'Elixir.BinbaseBackendWeb.Endpoint'},{websocket,true},{longpoll,false}]],[]},{'Elixir.Enum','-map/2-lists^map/1-0-',2,[{file,"lib/enum.ex"},{line,1327}]},{'Elixir.Phoenix.Endpoint.Supervisor',init,1,[{file,"lib/phoenix/endpoint/supervisor.ex"},{line,56}]},{supervisor,init,1,[{file,"supervisor.erl"},{line,295}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}}},{'Elixir.BinbaseBackend.Application',start,[normal,[]]}},[{application_master,init,4,[{file,"application_master.erl"},{line,138}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.438.0>]
+    message_queue_len: 1
+    messages: [{'EXIT',<0.440.0>,normal}]
+    links: [<0.438.0>,<0.43.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 987
+    stack_size: 27
+    reductions: 233
+  neighbours:
+2019-01-16 03:00:37 =ERROR REPORT====
+** Generic server 'Elixir.BinbaseBackend.Engine.Broadcaster' terminating 
+** Last message in was {'$gen_cast',{broadcast,<<"me msg">>}}
+** When Server state == ok
+** Reason for termination == 
+** {function_clause,[{'Elixir.AMQP.Basic',publish,[ok,<<"binbase_backend.exchange">>,<<"binbase_backend.routing">>,<<"me msg">>,[{type,<<"event">>}]],[{file,"lib/amqp/basic.ex"},{line,51}]},{'Elixir.BinbaseBackend.Engine.Broadcaster',handle_cast,2,[{file,"lib/binbase_backend/engine/broadcaster.ex"},{line,62}]},{gen_server,try_dispatch,4,[{file,"gen_server.erl"},{line,637}]},{gen_server,handle_msg,6,[{file,"gen_server.erl"},{line,711}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+2019-01-16 03:00:37 =CRASH REPORT====
+  crasher:
+    initial call: Elixir.BinbaseBackend.Engine.Broadcaster:init/1
+    pid: <0.453.0>
+    registered_name: 'Elixir.BinbaseBackend.Engine.Broadcaster'
+    exception error: {function_clause,[{'Elixir.AMQP.Basic',publish,[ok,<<"binbase_backend.exchange">>,<<"binbase_backend.routing">>,<<"me msg">>,[{type,<<"event">>}]],[{file,"lib/amqp/basic.ex"},{line,51}]},{'Elixir.BinbaseBackend.Engine.Broadcaster',handle_cast,2,[{file,"lib/binbase_backend/engine/broadcaster.ex"},{line,62}]},{gen_server,try_dispatch,4,[{file,"gen_server.erl"},{line,637}]},{gen_server,handle_msg,6,[{file,"gen_server.erl"},{line,711}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: ['Elixir.BinbaseBackend.MainSupervisor','Elixir.BinbaseBackend.Supervisor',<0.431.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.433.0>]
+    dictionary: []
+    trap_exit: false
+    status: running
+    heap_size: 10958
+    stack_size: 27
+    reductions: 46110
+  neighbours:
+2019-01-16 03:00:37 =SUPERVISOR REPORT====
+     Supervisor: {local,'Elixir.BinbaseBackend.MainSupervisor'}
+     Context:    child_terminated
+     Reason:     {function_clause,[{'Elixir.AMQP.Basic',publish,[ok,<<"binbase_backend.exchange">>,<<"binbase_backend.routing">>,<<"me msg">>,[{type,<<"event">>}]],[{file,"lib/amqp/basic.ex"},{line,51}]},{'Elixir.BinbaseBackend.Engine.Broadcaster',handle_cast,2,[{file,"lib/binbase_backend/engine/broadcaster.ex"},{line,62}]},{gen_server,try_dispatch,4,[{file,"gen_server.erl"},{line,637}]},{gen_server,handle_msg,6,[{file,"gen_server.erl"},{line,711}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+     Offender:   [{pid,<0.453.0>},{id,'Elixir.BinbaseBackend.Engine.Broadcaster'},{mfargs,{'Elixir.BinbaseBackend.Engine.Broadcaster',start_link,[]}},{restart_type,permanent},{shutdown,5000},{child_type,worker}]
+
+2019-01-16 03:01:56 =ERROR REPORT====
+** Generic server 'Elixir.BinbaseBackend.Engine.Broadcaster' terminating 
+** Last message in was {'$gen_cast',{broadcast,<<"me msg">>}}
+** When Server state == ok
+** Reason for termination == 
+** {function_clause,[{'Elixir.AMQP.Basic',publish,[ok,<<"binbase_backend.exchange">>,<<"binbase_backend.routing">>,<<"me msg">>,[{type,<<"event">>}]],[{file,"lib/amqp/basic.ex"},{line,51}]},{'Elixir.BinbaseBackend.Engine.Broadcaster',handle_cast,2,[{file,"lib/binbase_backend/engine/broadcaster.ex"},{line,62}]},{gen_server,try_dispatch,4,[{file,"gen_server.erl"},{line,637}]},{gen_server,handle_msg,6,[{file,"gen_server.erl"},{line,711}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+2019-01-16 03:01:56 =CRASH REPORT====
+  crasher:
+    initial call: Elixir.BinbaseBackend.Engine.Broadcaster:init/1
+    pid: <0.453.0>
+    registered_name: 'Elixir.BinbaseBackend.Engine.Broadcaster'
+    exception error: {function_clause,[{'Elixir.AMQP.Basic',publish,[ok,<<"binbase_backend.exchange">>,<<"binbase_backend.routing">>,<<"me msg">>,[{type,<<"event">>}]],[{file,"lib/amqp/basic.ex"},{line,51}]},{'Elixir.BinbaseBackend.Engine.Broadcaster',handle_cast,2,[{file,"lib/binbase_backend/engine/broadcaster.ex"},{line,62}]},{gen_server,try_dispatch,4,[{file,"gen_server.erl"},{line,637}]},{gen_server,handle_msg,6,[{file,"gen_server.erl"},{line,711}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: ['Elixir.BinbaseBackend.MainSupervisor','Elixir.BinbaseBackend.Supervisor',<0.431.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.433.0>]
+    dictionary: []
+    trap_exit: false
+    status: running
+    heap_size: 10958
+    stack_size: 27
+    reductions: 26124
+  neighbours:
+2019-01-16 03:01:56 =SUPERVISOR REPORT====
+     Supervisor: {local,'Elixir.BinbaseBackend.MainSupervisor'}
+     Context:    child_terminated
+     Reason:     {function_clause,[{'Elixir.AMQP.Basic',publish,[ok,<<"binbase_backend.exchange">>,<<"binbase_backend.routing">>,<<"me msg">>,[{type,<<"event">>}]],[{file,"lib/amqp/basic.ex"},{line,51}]},{'Elixir.BinbaseBackend.Engine.Broadcaster',handle_cast,2,[{file,"lib/binbase_backend/engine/broadcaster.ex"},{line,62}]},{gen_server,try_dispatch,4,[{file,"gen_server.erl"},{line,637}]},{gen_server,handle_msg,6,[{file,"gen_server.erl"},{line,711}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+     Offender:   [{pid,<0.453.0>},{id,'Elixir.BinbaseBackend.Engine.Broadcaster'},{mfargs,{'Elixir.BinbaseBackend.Engine.Broadcaster',start_link,[]}},{restart_type,permanent},{shutdown,5000},{child_type,worker}]
+
+2019-01-16 03:03:07 =ERROR REPORT====
+** Generic server 'Elixir.BinbaseBackend.Engine.Broadcaster' terminating 
+** Last message in was {'$gen_cast',{broadcast,<<"me msg">>}}
+** When Server state == ok
+** Reason for termination == 
+** {function_clause,[{'Elixir.AMQP.Basic',publish,[ok,<<"binbase_backend.exchange">>,<<"binbase_backend.routing">>,<<"me msg">>,[{type,<<"event">>}]],[{file,"lib/amqp/basic.ex"},{line,51}]},{'Elixir.BinbaseBackend.Engine.Broadcaster',handle_cast,2,[{file,"lib/binbase_backend/engine/broadcaster.ex"},{line,62}]},{gen_server,try_dispatch,4,[{file,"gen_server.erl"},{line,637}]},{gen_server,handle_msg,6,[{file,"gen_server.erl"},{line,711}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+2019-01-16 03:03:07 =CRASH REPORT====
+  crasher:
+    initial call: Elixir.BinbaseBackend.Engine.Broadcaster:init/1
+    pid: <0.453.0>
+    registered_name: 'Elixir.BinbaseBackend.Engine.Broadcaster'
+    exception error: {function_clause,[{'Elixir.AMQP.Basic',publish,[ok,<<"binbase_backend.exchange">>,<<"binbase_backend.routing">>,<<"me msg">>,[{type,<<"event">>}]],[{file,"lib/amqp/basic.ex"},{line,51}]},{'Elixir.BinbaseBackend.Engine.Broadcaster',handle_cast,2,[{file,"lib/binbase_backend/engine/broadcaster.ex"},{line,62}]},{gen_server,try_dispatch,4,[{file,"gen_server.erl"},{line,637}]},{gen_server,handle_msg,6,[{file,"gen_server.erl"},{line,711}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: ['Elixir.BinbaseBackend.MainSupervisor','Elixir.BinbaseBackend.Supervisor',<0.431.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.433.0>]
+    dictionary: []
+    trap_exit: false
+    status: running
+    heap_size: 10958
+    stack_size: 27
+    reductions: 46111
+  neighbours:
+2019-01-16 03:03:07 =SUPERVISOR REPORT====
+     Supervisor: {local,'Elixir.BinbaseBackend.MainSupervisor'}
+     Context:    child_terminated
+     Reason:     {function_clause,[{'Elixir.AMQP.Basic',publish,[ok,<<"binbase_backend.exchange">>,<<"binbase_backend.routing">>,<<"me msg">>,[{type,<<"event">>}]],[{file,"lib/amqp/basic.ex"},{line,51}]},{'Elixir.BinbaseBackend.Engine.Broadcaster',handle_cast,2,[{file,"lib/binbase_backend/engine/broadcaster.ex"},{line,62}]},{gen_server,try_dispatch,4,[{file,"gen_server.erl"},{line,637}]},{gen_server,handle_msg,6,[{file,"gen_server.erl"},{line,711}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+     Offender:   [{pid,<0.453.0>},{id,'Elixir.BinbaseBackend.Engine.Broadcaster'},{mfargs,{'Elixir.BinbaseBackend.Engine.Broadcaster',start_link,[]}},{restart_type,permanent},{shutdown,5000},{child_type,worker}]
+
+2019-01-16 03:05:42 =ERROR REPORT====
+** Generic server 'Elixir.BinbaseBackend.Engine.Broadcaster' terminating 
+** Last message in was {'$gen_cast',{broadcast,<<"me msg">>}}
+** When Server state == ok
+** Reason for termination == 
+** {function_clause,[{'Elixir.AMQP.Basic',publish,[ok,<<"binbase_backend.exchange">>,<<"binbase_backend.routing">>,<<"me msg">>,[{type,<<"event">>}]],[{file,"lib/amqp/basic.ex"},{line,51}]},{'Elixir.BinbaseBackend.Engine.Broadcaster',handle_cast,2,[{file,"lib/binbase_backend/engine/broadcaster.ex"},{line,62}]},{gen_server,try_dispatch,4,[{file,"gen_server.erl"},{line,637}]},{gen_server,handle_msg,6,[{file,"gen_server.erl"},{line,711}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+2019-01-16 03:05:42 =CRASH REPORT====
+  crasher:
+    initial call: Elixir.BinbaseBackend.Engine.Broadcaster:init/1
+    pid: <0.453.0>
+    registered_name: 'Elixir.BinbaseBackend.Engine.Broadcaster'
+    exception error: {function_clause,[{'Elixir.AMQP.Basic',publish,[ok,<<"binbase_backend.exchange">>,<<"binbase_backend.routing">>,<<"me msg">>,[{type,<<"event">>}]],[{file,"lib/amqp/basic.ex"},{line,51}]},{'Elixir.BinbaseBackend.Engine.Broadcaster',handle_cast,2,[{file,"lib/binbase_backend/engine/broadcaster.ex"},{line,62}]},{gen_server,try_dispatch,4,[{file,"gen_server.erl"},{line,637}]},{gen_server,handle_msg,6,[{file,"gen_server.erl"},{line,711}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: ['Elixir.BinbaseBackend.MainSupervisor','Elixir.BinbaseBackend.Supervisor',<0.431.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.433.0>]
+    dictionary: []
+    trap_exit: false
+    status: running
+    heap_size: 10958
+    stack_size: 27
+    reductions: 46105
+  neighbours:
+2019-01-16 03:05:42 =SUPERVISOR REPORT====
+     Supervisor: {local,'Elixir.BinbaseBackend.MainSupervisor'}
+     Context:    child_terminated
+     Reason:     {function_clause,[{'Elixir.AMQP.Basic',publish,[ok,<<"binbase_backend.exchange">>,<<"binbase_backend.routing">>,<<"me msg">>,[{type,<<"event">>}]],[{file,"lib/amqp/basic.ex"},{line,51}]},{'Elixir.BinbaseBackend.Engine.Broadcaster',handle_cast,2,[{file,"lib/binbase_backend/engine/broadcaster.ex"},{line,62}]},{gen_server,try_dispatch,4,[{file,"gen_server.erl"},{line,637}]},{gen_server,handle_msg,6,[{file,"gen_server.erl"},{line,711}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+     Offender:   [{pid,<0.453.0>},{id,'Elixir.BinbaseBackend.Engine.Broadcaster'},{mfargs,{'Elixir.BinbaseBackend.Engine.Broadcaster',start_link,[]}},{restart_type,permanent},{shutdown,5000},{child_type,worker}]
+

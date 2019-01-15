@@ -1,7 +1,8 @@
-defmodule BinbaseBackendWeb.UserSocket do
+defmodule BinbaseBackendWeb.MainSocket do
   use Phoenix.Socket
 
   ## Channels
+  channel "trade", BinbaseBackendWeb.TradeChannel
   # channel "room:*", BinbaseBackendWeb.RoomChannel
 
   # Socket params are passed from the client and can

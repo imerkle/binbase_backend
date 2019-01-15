@@ -8,8 +8,7 @@ defmodule BinbaseBackend.Application do
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
-      # Start the Ecto repository
-      BinbaseBackend.Repo,
+      BinbaseBackend.MainSupervisor,
       # Start the endpoint when the application starts
       BinbaseBackendWeb.Endpoint
       # Starts a worker by calling: BinbaseBackend.Worker.start_link(arg)

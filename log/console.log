@@ -1,0 +1,276 @@
+2019-01-13 00:43:34.416 [info] <0.43.0> Application lager started on node nonode@nohost
+2019-01-13 00:43:34.425 [info] <0.43.0> Application xmerl started on node nonode@nohost
+2019-01-13 00:43:34.430 [info] <0.43.0> Application jsx started on node nonode@nohost
+2019-01-13 00:43:34.435 [info] <0.43.0> Application ranch_proxy_protocol started on node nonode@nohost
+2019-01-13 00:43:34.439 [info] <0.43.0> Application recon started on node nonode@nohost
+2019-01-13 00:43:34.440 [info] <0.43.0> Application rabbit_common started on node nonode@nohost
+2019-01-13 00:43:34.452 [info] <0.43.0> Application amqp_client started on node nonode@nohost
+2019-01-13 00:43:34.454 [info] <0.43.0> Application amqp started on node nonode@nohost
+2019-01-13 00:43:34.462 [info] <0.43.0> Application connection started on node nonode@nohost
+2019-01-13 00:43:34.478 [info] <0.43.0> Application db_connection started on node nonode@nohost
+2019-01-13 00:43:34.483 [info] <0.43.0> Application decimal started on node nonode@nohost
+2019-01-13 00:43:34.496 [info] <0.43.0> Application postgrex started on node nonode@nohost
+2019-01-13 00:43:34.506 [info] <0.43.0> Application telemetry started on node nonode@nohost
+2019-01-13 00:43:34.514 [info] <0.43.0> Application ecto started on node nonode@nohost
+2019-01-13 00:43:34.519 [info] <0.43.0> Application ecto_sql started on node nonode@nohost
+2019-01-13 00:43:34.525 [info] <0.43.0> Application cowlib started on node nonode@nohost
+2019-01-13 00:43:34.531 [info] <0.43.0> Application cowboy started on node nonode@nohost
+2019-01-13 00:43:34.535 [info] <0.43.0> Application plug_cowboy started on node nonode@nohost
+2019-01-13 00:43:34.537 [info] <0.43.0> Application phoenix_token_plug started on node nonode@nohost
+2019-01-13 00:43:34.542 [info] <0.43.0> Application phoenix_ecto started on node nonode@nohost
+2019-01-13 00:43:34.545 [error] <0.378.0>@Elixir.BinbaseBackend.MainSupervisor:init:21 CRASH REPORT Process <0.378.0> with 0 neighbours crashed with reason: no function clause matching 'Elixir.BinbaseBackend.MainSupervisor':init([]) line 21
+2019-01-13 00:43:34.551 [error] <0.377.0>@Elixir.BinbaseBackend.MainSupervisor:init:21 Supervisor 'Elixir.BinbaseBackend.Supervisor' had child 'Elixir.BinbaseBackend.MainSupervisor' started with 'Elixir.BinbaseBackend.MainSupervisor':start_link([]) at undefined exit with reason no function clause matching 'Elixir.BinbaseBackend.MainSupervisor':init([]) line 21 in context start_error
+2019-01-13 00:54:09.633 [info] <0.43.0> Application lager started on node nonode@nohost
+2019-01-13 00:54:09.642 [info] <0.43.0> Application xmerl started on node nonode@nohost
+2019-01-13 00:54:09.648 [info] <0.43.0> Application jsx started on node nonode@nohost
+2019-01-13 00:54:09.653 [info] <0.43.0> Application ranch_proxy_protocol started on node nonode@nohost
+2019-01-13 00:54:09.660 [info] <0.43.0> Application recon started on node nonode@nohost
+2019-01-13 00:54:09.662 [info] <0.43.0> Application rabbit_common started on node nonode@nohost
+2019-01-13 00:54:09.673 [info] <0.43.0> Application amqp_client started on node nonode@nohost
+2019-01-13 00:54:09.675 [info] <0.43.0> Application amqp started on node nonode@nohost
+2019-01-13 00:54:09.685 [info] <0.43.0> Application connection started on node nonode@nohost
+2019-01-13 00:54:09.701 [info] <0.43.0> Application db_connection started on node nonode@nohost
+2019-01-13 00:54:09.705 [info] <0.43.0> Application decimal started on node nonode@nohost
+2019-01-13 00:54:09.719 [info] <0.43.0> Application postgrex started on node nonode@nohost
+2019-01-13 00:54:09.729 [info] <0.43.0> Application telemetry started on node nonode@nohost
+2019-01-13 00:54:09.739 [info] <0.43.0> Application ecto started on node nonode@nohost
+2019-01-13 00:54:09.743 [info] <0.43.0> Application ecto_sql started on node nonode@nohost
+2019-01-13 00:54:09.749 [info] <0.43.0> Application cowlib started on node nonode@nohost
+2019-01-13 00:54:09.755 [info] <0.43.0> Application cowboy started on node nonode@nohost
+2019-01-13 00:54:09.759 [info] <0.43.0> Application plug_cowboy started on node nonode@nohost
+2019-01-13 00:54:09.761 [info] <0.43.0> Application phoenix_token_plug started on node nonode@nohost
+2019-01-13 00:54:09.766 [info] <0.43.0> Application phoenix_ecto started on node nonode@nohost
+2019-01-13 00:54:10.001 [warning] <0.291.0> lager_error_logger_h dropped 20 messages in the last second that exceeded the limit of 50 messages/sec
+2019-01-13 00:54:11.000 [warning] <0.291.0> lager_error_logger_h dropped 68 messages in the last second that exceeded the limit of 50 messages/sec
+2019-01-13 01:26:00.535 [info] <0.43.0> Application lager started on node nonode@nohost
+2019-01-13 01:26:00.549 [info] <0.43.0> Application xmerl started on node nonode@nohost
+2019-01-13 01:26:00.557 [info] <0.43.0> Application jsx started on node nonode@nohost
+2019-01-13 01:26:00.569 [info] <0.43.0> Application ranch_proxy_protocol started on node nonode@nohost
+2019-01-13 01:26:00.578 [info] <0.43.0> Application recon started on node nonode@nohost
+2019-01-13 01:26:00.581 [info] <0.43.0> Application rabbit_common started on node nonode@nohost
+2019-01-13 01:26:00.595 [info] <0.43.0> Application amqp_client started on node nonode@nohost
+2019-01-13 01:26:00.597 [info] <0.43.0> Application amqp started on node nonode@nohost
+2019-01-13 01:26:00.614 [info] <0.43.0> Application connection started on node nonode@nohost
+2019-01-13 01:26:00.633 [info] <0.43.0> Application db_connection started on node nonode@nohost
+2019-01-13 01:26:00.637 [info] <0.43.0> Application decimal started on node nonode@nohost
+2019-01-13 01:26:00.663 [info] <0.43.0> Application postgrex started on node nonode@nohost
+2019-01-13 01:26:00.678 [info] <0.43.0> Application telemetry started on node nonode@nohost
+2019-01-13 01:26:00.688 [info] <0.43.0> Application ecto started on node nonode@nohost
+2019-01-13 01:26:00.696 [info] <0.43.0> Application ecto_sql started on node nonode@nohost
+2019-01-13 01:26:00.704 [info] <0.43.0> Application cowlib started on node nonode@nohost
+2019-01-13 01:26:00.715 [info] <0.43.0> Application cowboy started on node nonode@nohost
+2019-01-13 01:26:00.720 [info] <0.43.0> Application plug_cowboy started on node nonode@nohost
+2019-01-13 01:26:00.724 [info] <0.43.0> Application phoenix_token_plug started on node nonode@nohost
+2019-01-13 01:26:00.738 [info] <0.43.0> Application phoenix_ecto started on node nonode@nohost
+2019-01-13 01:26:01.000 [warning] <0.291.0> lager_error_logger_h dropped 9 messages in the last second that exceeded the limit of 50 messages/sec
+2019-01-13 01:26:02.000 [warning] <0.291.0> lager_error_logger_h dropped 81 messages in the last second that exceeded the limit of 50 messages/sec
+2019-01-13 02:03:38.407 [info] <0.43.0> Application lager started on node nonode@nohost
+2019-01-13 02:03:38.419 [info] <0.43.0> Application xmerl started on node nonode@nohost
+2019-01-13 02:03:38.426 [info] <0.43.0> Application jsx started on node nonode@nohost
+2019-01-13 02:03:38.432 [info] <0.43.0> Application ranch_proxy_protocol started on node nonode@nohost
+2019-01-13 02:03:38.444 [info] <0.43.0> Application recon started on node nonode@nohost
+2019-01-13 02:03:38.447 [info] <0.43.0> Application rabbit_common started on node nonode@nohost
+2019-01-13 02:03:38.462 [info] <0.43.0> Application amqp_client started on node nonode@nohost
+2019-01-13 02:03:38.463 [info] <0.43.0> Application amqp started on node nonode@nohost
+2019-01-13 02:03:38.479 [info] <0.43.0> Application ex_machina started on node nonode@nohost
+2019-01-13 02:03:38.491 [info] <0.43.0> Application cowlib started on node nonode@nohost
+2019-01-13 02:03:38.498 [info] <0.43.0> Application cowboy started on node nonode@nohost
+2019-01-13 02:03:38.507 [info] <0.43.0> Application plug_cowboy started on node nonode@nohost
+2019-01-13 02:03:38.509 [info] <0.43.0> Application phoenix_token_plug started on node nonode@nohost
+2019-01-13 02:03:38.518 [info] <0.43.0> Application phoenix_ecto started on node nonode@nohost
+2019-01-13 02:03:39.020 [warning] <0.399.0> lager_error_logger_h dropped 19 messages in the last second that exceeded the limit of 50 messages/sec
+2019-01-13 02:03:39.146 [error] <0.476.0>@lists:reverse:147 CRASH REPORT Process <0.476.0> with 0 neighbours crashed with reason: no function clause matching lists:reverse(#{'__meta__' => #{'__struct__' => 'Elixir.Ecto.Schema.Metadata',context => nil,prefix => nil,schema => ...,...},...}) line 147
+2019-01-13 02:03:39.147 [error] <0.473.0>@lists:reverse:147 Supervisor {<0.473.0>,amqp_channel_sup} had child writer started with rabbit_writer:start_link(#Port<0.107>, 1, 131072, rabbit_framing_amqp_0_9_1, <0.475.0>, {<<"client 127.0.0.1:44513 -> 127.0.0.1:5672">>,1}) at <0.476.0> exit with reason no function clause matching lists:reverse(#{'__meta__' => #{'__struct__' => 'Elixir.Ecto.Schema.Metadata',context => nil,prefix => nil,schema => ...,...},...}) line 147 in context child_terminated
+2019-01-13 02:03:39.147 [error] <0.473.0> Supervisor {<0.473.0>,amqp_channel_sup} had child writer started with rabbit_writer:start_link(#Port<0.107>, 1, 131072, rabbit_framing_amqp_0_9_1, <0.475.0>, {<<"client 127.0.0.1:44513 -> 127.0.0.1:5672">>,1}) at <0.476.0> exit with reason reached_max_restart_intensity in context shutdown
+2019-01-13 20:55:41.688 [info] <0.43.0> Application lager started on node nonode@nohost
+2019-01-13 20:55:41.702 [info] <0.43.0> Application xmerl started on node nonode@nohost
+2019-01-13 20:55:41.715 [info] <0.43.0> Application jsx started on node nonode@nohost
+2019-01-13 20:55:41.720 [info] <0.43.0> Application ranch_proxy_protocol started on node nonode@nohost
+2019-01-13 20:55:41.728 [info] <0.43.0> Application recon started on node nonode@nohost
+2019-01-13 20:55:41.729 [info] <0.43.0> Application rabbit_common started on node nonode@nohost
+2019-01-13 20:55:41.747 [info] <0.43.0> Application amqp_client started on node nonode@nohost
+2019-01-13 20:55:41.749 [info] <0.43.0> Application amqp started on node nonode@nohost
+2019-01-13 20:55:41.760 [info] <0.43.0> Application ex_machina started on node nonode@nohost
+2019-01-13 20:55:41.767 [info] <0.43.0> Application cowlib started on node nonode@nohost
+2019-01-13 20:55:41.774 [info] <0.43.0> Application cowboy started on node nonode@nohost
+2019-01-13 20:55:41.782 [info] <0.43.0> Application plug_cowboy started on node nonode@nohost
+2019-01-13 20:55:41.794 [info] <0.43.0> Application phoenix_token_plug started on node nonode@nohost
+2019-01-13 20:55:41.805 [info] <0.43.0> Application phoenix_ecto started on node nonode@nohost
+2019-01-13 20:55:42.000 [warning] <0.405.0> lager_error_logger_h dropped 13 messages in the last second that exceeded the limit of 50 messages/sec
+2019-01-13 20:55:42.002 [error] <0.445.0> CRASH REPORT Process <0.445.0> with 0 neighbours exited with reason: {{shutdown,{failed_to_start_child,'Elixir.BinbaseBackend.MainSupervisor',{shutdown,{failed_to_start_child,'Elixir.BinbaseBackend.Engine.Listener',{undef,[{'Elixir.AMQPqueue.Queue',declare,[#{'__struct__' => 'Elixir.AMQP.Channel',conn => #{'__struct__' => 'Elixir.AMQP.Connection',pid => <0.486.0>},pid => <0.495.0>},<<"binbase_backend.queue">>,[{durable,false}]],[]},{'Elixir.BinbaseBackend.Engine.Listener',init,1,[{file,"lib/binbase_backend/engine/listener.ex"},{line,59}]},{gen_server,init_it,...},...]}}}}},...} in application_master:init/4 line 138
+2019-01-14 01:38:58.273 [info] <0.43.0> Application lager started on node nonode@nohost
+2019-01-14 01:38:58.291 [info] <0.43.0> Application xmerl started on node nonode@nohost
+2019-01-14 01:38:58.298 [info] <0.43.0> Application jsx started on node nonode@nohost
+2019-01-14 01:38:58.305 [info] <0.43.0> Application ranch_proxy_protocol started on node nonode@nohost
+2019-01-14 01:38:58.313 [info] <0.43.0> Application recon started on node nonode@nohost
+2019-01-14 01:38:58.319 [info] <0.43.0> Application rabbit_common started on node nonode@nohost
+2019-01-14 01:38:58.339 [info] <0.43.0> Application amqp_client started on node nonode@nohost
+2019-01-14 01:38:58.341 [info] <0.43.0> Application amqp started on node nonode@nohost
+2019-01-14 01:38:58.371 [info] <0.43.0> Application connection started on node nonode@nohost
+2019-01-14 01:38:58.409 [info] <0.43.0> Application db_connection started on node nonode@nohost
+2019-01-14 01:38:58.414 [info] <0.43.0> Application decimal started on node nonode@nohost
+2019-01-14 01:38:58.433 [info] <0.43.0> Application postgrex started on node nonode@nohost
+2019-01-14 01:38:58.451 [info] <0.43.0> Application telemetry started on node nonode@nohost
+2019-01-14 01:38:58.459 [info] <0.43.0> Application ecto started on node nonode@nohost
+2019-01-14 01:38:58.464 [info] <0.43.0> Application ecto_sql started on node nonode@nohost
+2019-01-14 01:38:58.477 [info] <0.43.0> Application cowlib started on node nonode@nohost
+2019-01-14 01:38:58.485 [info] <0.43.0> Application cowboy started on node nonode@nohost
+2019-01-14 01:38:58.491 [info] <0.43.0> Application plug_cowboy started on node nonode@nohost
+2019-01-14 01:38:58.493 [info] <0.43.0> Application phoenix_token_plug started on node nonode@nohost
+2019-01-14 01:38:58.499 [info] <0.43.0> Application phoenix_ecto started on node nonode@nohost
+2019-01-14 01:38:59.008 [warning] <0.316.0> lager_error_logger_h dropped 151 messages in the last second that exceeded the limit of 50 messages/sec
+2019-01-14 01:39:46.944 [info] <0.43.0> Application lager started on node nonode@nohost
+2019-01-14 01:39:46.961 [info] <0.43.0> Application xmerl started on node nonode@nohost
+2019-01-14 01:39:46.974 [info] <0.43.0> Application jsx started on node nonode@nohost
+2019-01-14 01:39:46.981 [info] <0.43.0> Application ranch_proxy_protocol started on node nonode@nohost
+2019-01-14 01:39:46.988 [info] <0.43.0> Application recon started on node nonode@nohost
+2019-01-14 01:39:46.993 [info] <0.43.0> Application rabbit_common started on node nonode@nohost
+2019-01-14 01:39:47.013 [info] <0.43.0> Application amqp_client started on node nonode@nohost
+2019-01-14 01:39:47.015 [info] <0.43.0> Application amqp started on node nonode@nohost
+2019-01-14 01:39:47.031 [info] <0.43.0> Application connection started on node nonode@nohost
+2019-01-14 01:39:47.057 [info] <0.43.0> Application db_connection started on node nonode@nohost
+2019-01-14 01:39:47.061 [info] <0.43.0> Application decimal started on node nonode@nohost
+2019-01-14 01:39:47.091 [info] <0.43.0> Application postgrex started on node nonode@nohost
+2019-01-14 01:39:47.105 [info] <0.43.0> Application telemetry started on node nonode@nohost
+2019-01-14 01:39:47.121 [info] <0.43.0> Application ecto started on node nonode@nohost
+2019-01-14 01:39:47.127 [info] <0.43.0> Application ecto_sql started on node nonode@nohost
+2019-01-14 01:39:47.135 [info] <0.43.0> Application cowlib started on node nonode@nohost
+2019-01-14 01:39:47.141 [info] <0.43.0> Application cowboy started on node nonode@nohost
+2019-01-14 01:39:47.148 [info] <0.43.0> Application plug_cowboy started on node nonode@nohost
+2019-01-14 01:39:47.154 [info] <0.43.0> Application phoenix_token_plug started on node nonode@nohost
+2019-01-14 01:39:47.161 [info] <0.43.0> Application phoenix_ecto started on node nonode@nohost
+2019-01-14 01:39:47.999 [warning] <0.301.0> lager_error_logger_h dropped 48 messages in the last second that exceeded the limit of 50 messages/sec
+2019-01-14 18:24:48.823 [info] <0.43.0> Application lager started on node nonode@nohost
+2019-01-14 18:24:48.833 [info] <0.43.0> Application xmerl started on node nonode@nohost
+2019-01-14 18:24:48.838 [info] <0.43.0> Application jsx started on node nonode@nohost
+2019-01-14 18:24:48.844 [info] <0.43.0> Application ranch_proxy_protocol started on node nonode@nohost
+2019-01-14 18:24:48.848 [info] <0.43.0> Application recon started on node nonode@nohost
+2019-01-14 18:24:48.849 [info] <0.43.0> Application rabbit_common started on node nonode@nohost
+2019-01-14 18:24:48.863 [info] <0.43.0> Application amqp_client started on node nonode@nohost
+2019-01-14 18:24:48.865 [info] <0.43.0> Application amqp started on node nonode@nohost
+2019-01-14 18:24:48.874 [info] <0.43.0> Application connection started on node nonode@nohost
+2019-01-14 18:24:48.892 [info] <0.43.0> Application db_connection started on node nonode@nohost
+2019-01-14 18:24:48.896 [info] <0.43.0> Application decimal started on node nonode@nohost
+2019-01-14 18:24:48.913 [info] <0.43.0> Application postgrex started on node nonode@nohost
+2019-01-14 18:24:48.926 [info] <0.43.0> Application telemetry started on node nonode@nohost
+2019-01-14 18:24:48.934 [info] <0.43.0> Application ecto started on node nonode@nohost
+2019-01-14 18:24:48.940 [info] <0.43.0> Application ecto_sql started on node nonode@nohost
+2019-01-14 18:24:48.947 [info] <0.43.0> Application cowlib started on node nonode@nohost
+2019-01-14 18:24:48.955 [info] <0.43.0> Application cowboy started on node nonode@nohost
+2019-01-14 18:24:48.959 [info] <0.43.0> Application plug_cowboy started on node nonode@nohost
+2019-01-14 18:24:48.961 [info] <0.43.0> Application phoenix_token_plug started on node nonode@nohost
+2019-01-14 18:24:48.967 [info] <0.43.0> Application phoenix_ecto started on node nonode@nohost
+2019-01-14 18:24:49.999 [warning] <0.310.0> lager_error_logger_h dropped 151 messages in the last second that exceeded the limit of 50 messages/sec
+2019-01-14 21:28:00.678 [info] <0.43.0> Application lager started on node nonode@nohost
+2019-01-14 21:28:00.688 [info] <0.43.0> Application xmerl started on node nonode@nohost
+2019-01-14 21:28:00.693 [info] <0.43.0> Application jsx started on node nonode@nohost
+2019-01-14 21:28:00.699 [info] <0.43.0> Application ranch_proxy_protocol started on node nonode@nohost
+2019-01-14 21:28:00.703 [info] <0.43.0> Application recon started on node nonode@nohost
+2019-01-14 21:28:00.705 [info] <0.43.0> Application rabbit_common started on node nonode@nohost
+2019-01-14 21:28:00.719 [info] <0.43.0> Application amqp_client started on node nonode@nohost
+2019-01-14 21:28:00.720 [info] <0.43.0> Application amqp started on node nonode@nohost
+2019-01-14 21:28:00.726 [info] <0.43.0> Application ex_machina started on node nonode@nohost
+2019-01-14 21:28:00.732 [info] <0.43.0> Application cowlib started on node nonode@nohost
+2019-01-14 21:28:00.739 [info] <0.43.0> Application cowboy started on node nonode@nohost
+2019-01-14 21:28:00.742 [info] <0.43.0> Application plug_cowboy started on node nonode@nohost
+2019-01-14 21:28:00.746 [info] <0.43.0> Application phoenix_token_plug started on node nonode@nohost
+2019-01-14 21:28:00.752 [info] <0.43.0> Application phoenix_ecto started on node nonode@nohost
+2019-01-14 21:28:00.999 [warning] <0.404.0> lager_error_logger_h dropped 31 messages in the last second that exceeded the limit of 50 messages/sec
+2019-01-14 21:28:01.213 [error] <0.481.0>@lists:reverse:147 CRASH REPORT Process <0.481.0> with 0 neighbours crashed with reason: no function clause matching lists:reverse(#{data => <<"me msg">>,type => <<"event">>}) line 147
+2019-01-14 21:28:01.213 [error] <0.478.0>@lists:reverse:147 Supervisor {<0.478.0>,amqp_channel_sup} had child writer started with rabbit_writer:start_link(#Port<0.109>, 1, 131072, rabbit_framing_amqp_0_9_1, <0.480.0>, {<<"client 127.0.0.1:34059 -> 127.0.0.1:5672">>,1}) at <0.481.0> exit with reason no function clause matching lists:reverse(#{data => <<"me msg">>,type => <<"event">>}) line 147 in context child_terminated
+2019-01-16 02:54:34.377 [info] <0.43.0> Application lager started on node nonode@nohost
+2019-01-16 02:54:34.389 [info] <0.43.0> Application xmerl started on node nonode@nohost
+2019-01-16 02:54:34.396 [info] <0.43.0> Application jsx started on node nonode@nohost
+2019-01-16 02:54:34.402 [info] <0.43.0> Application ranch_proxy_protocol started on node nonode@nohost
+2019-01-16 02:54:34.408 [info] <0.43.0> Application recon started on node nonode@nohost
+2019-01-16 02:54:34.409 [info] <0.43.0> Application rabbit_common started on node nonode@nohost
+2019-01-16 02:54:34.429 [info] <0.43.0> Application amqp_client started on node nonode@nohost
+2019-01-16 02:54:34.431 [info] <0.43.0> Application amqp started on node nonode@nohost
+2019-01-16 02:54:34.434 [info] <0.43.0> Application ex_machina started on node nonode@nohost
+2019-01-16 02:54:34.436 [info] <0.43.0> Application phoenix_token_plug started on node nonode@nohost
+2019-01-16 02:54:34.439 [info] <0.43.0> Application phoenix_ecto started on node nonode@nohost
+2019-01-16 02:54:34.498 [error] <0.3316.0>@Elixir.BinbaseBackend.Engine.Broadcaster:init:45 CRASH REPORT Process <0.3316.0> with 0 neighbours crashed with reason: no match of right hand value {error,econnrefused} in 'Elixir.BinbaseBackend.Engine.Broadcaster':init/1 line 45
+2019-01-16 02:54:34.498 [error] <0.3296.0>@Elixir.BinbaseBackend.Engine.Broadcaster:init:45 Supervisor 'Elixir.BinbaseBackend.MainSupervisor' had child 'Elixir.BinbaseBackend.Engine.Broadcaster' started with 'Elixir.BinbaseBackend.Engine.Broadcaster':start_link() at undefined exit with reason no match of right hand value {error,econnrefused} in 'Elixir.BinbaseBackend.Engine.Broadcaster':init/1 line 45 in context start_error
+2019-01-16 02:55:13.166 [info] <0.43.0> Application lager started on node nonode@nohost
+2019-01-16 02:55:13.176 [info] <0.43.0> Application xmerl started on node nonode@nohost
+2019-01-16 02:55:13.182 [info] <0.43.0> Application jsx started on node nonode@nohost
+2019-01-16 02:55:13.188 [info] <0.43.0> Application ranch_proxy_protocol started on node nonode@nohost
+2019-01-16 02:55:13.193 [info] <0.43.0> Application recon started on node nonode@nohost
+2019-01-16 02:55:13.195 [info] <0.43.0> Application rabbit_common started on node nonode@nohost
+2019-01-16 02:55:13.207 [info] <0.43.0> Application amqp_client started on node nonode@nohost
+2019-01-16 02:55:13.209 [info] <0.43.0> Application amqp started on node nonode@nohost
+2019-01-16 02:55:13.217 [info] <0.43.0> Application ex_machina started on node nonode@nohost
+2019-01-16 02:55:13.219 [info] <0.43.0> Application phoenix_token_plug started on node nonode@nohost
+2019-01-16 02:55:13.224 [info] <0.43.0> Application phoenix_ecto started on node nonode@nohost
+2019-01-16 02:55:13.284 [error] <0.442.0>@Elixir.BinbaseBackend.Engine.Listener:init:55 Supervisor 'Elixir.BinbaseBackend.MainSupervisor' had child 'Elixir.BinbaseBackend.Engine.Listener' started with 'Elixir.BinbaseBackend.Engine.Listener':start_link() at undefined exit with reason no match of right hand value {error,econnrefused} in 'Elixir.BinbaseBackend.Engine.Listener':init/1 line 55 in context start_error
+2019-01-16 02:55:13.284 [error] <0.463.0>@Elixir.BinbaseBackend.Engine.Listener:init:55 CRASH REPORT Process <0.463.0> with 0 neighbours crashed with reason: no match of right hand value {error,econnrefused} in 'Elixir.BinbaseBackend.Engine.Listener':init/1 line 55
+2019-01-16 02:55:57.382 [info] <0.43.0> Application lager started on node nonode@nohost
+2019-01-16 02:55:57.391 [info] <0.43.0> Application xmerl started on node nonode@nohost
+2019-01-16 02:55:57.396 [info] <0.43.0> Application jsx started on node nonode@nohost
+2019-01-16 02:55:57.401 [info] <0.43.0> Application ranch_proxy_protocol started on node nonode@nohost
+2019-01-16 02:55:57.407 [info] <0.43.0> Application recon started on node nonode@nohost
+2019-01-16 02:55:57.409 [info] <0.43.0> Application rabbit_common started on node nonode@nohost
+2019-01-16 02:55:57.423 [info] <0.43.0> Application amqp_client started on node nonode@nohost
+2019-01-16 02:55:57.424 [info] <0.43.0> Application amqp started on node nonode@nohost
+2019-01-16 02:55:57.432 [info] <0.43.0> Application ex_machina started on node nonode@nohost
+2019-01-16 02:55:57.434 [info] <0.43.0> Application phoenix_token_plug started on node nonode@nohost
+2019-01-16 02:55:57.439 [info] <0.43.0> Application phoenix_ecto started on node nonode@nohost
+2019-01-16 02:55:57.559 [error] <0.479.0>@Elixir.BinbaseBackendWeb.UserSocket:child_spec CRASH REPORT Process <0.479.0> with 0 neighbours crashed with reason: call to undefined function 'Elixir.BinbaseBackendWeb.UserSocket':child_spec([{endpoint,'Elixir.BinbaseBackendWeb.Endpoint'},{websocket,true},{longpoll,false}])
+2019-01-16 02:55:57.560 [error] <0.441.0>@Elixir.BinbaseBackendWeb.UserSocket:child_spec Supervisor 'Elixir.BinbaseBackend.Supervisor' had child 'Elixir.BinbaseBackendWeb.Endpoint' started with 'Elixir.BinbaseBackendWeb.Endpoint':start_link([]) at undefined exit with reason call to undefined function 'Elixir.BinbaseBackendWeb.UserSocket':child_spec([{endpoint,'Elixir.BinbaseBackendWeb.Endpoint'},{websocket,true},{longpoll,false}]) in context start_error
+2019-01-16 03:00:36.732 [info] <0.43.0> Application lager started on node nonode@nohost
+2019-01-16 03:00:36.743 [info] <0.43.0> Application xmerl started on node nonode@nohost
+2019-01-16 03:00:36.749 [info] <0.43.0> Application jsx started on node nonode@nohost
+2019-01-16 03:00:36.754 [info] <0.43.0> Application ranch_proxy_protocol started on node nonode@nohost
+2019-01-16 03:00:36.759 [info] <0.43.0> Application recon started on node nonode@nohost
+2019-01-16 03:00:36.761 [info] <0.43.0> Application rabbit_common started on node nonode@nohost
+2019-01-16 03:00:36.776 [info] <0.43.0> Application amqp_client started on node nonode@nohost
+2019-01-16 03:00:36.779 [info] <0.43.0> Application amqp started on node nonode@nohost
+2019-01-16 03:00:36.786 [info] <0.43.0> Application ex_machina started on node nonode@nohost
+2019-01-16 03:00:36.788 [info] <0.43.0> Application phoenix_token_plug started on node nonode@nohost
+2019-01-16 03:00:36.793 [info] <0.43.0> Application phoenix_ecto started on node nonode@nohost
+2019-01-16 03:00:37.000 [warning] <0.400.0> lager_error_logger_h dropped 16 messages in the last second that exceeded the limit of 50 messages/sec
+2019-01-16 03:00:37.322 [error] <0.453.0>@Elixir.AMQP.Basic:publish:51 gen_server 'Elixir.BinbaseBackend.Engine.Broadcaster' terminated with reason: no function clause matching 'Elixir.AMQP.Basic':publish(ok, <<"binbase_backend.exchange">>, <<"binbase_backend.routing">>, <<"me msg">>, [{type,<<"event">>}]) line 51
+2019-01-16 03:00:37.371 [error] <0.453.0>@Elixir.AMQP.Basic:publish:51 CRASH REPORT Process 'Elixir.BinbaseBackend.Engine.Broadcaster' with 0 neighbours crashed with reason: no function clause matching 'Elixir.AMQP.Basic':publish(ok, <<"binbase_backend.exchange">>, <<"binbase_backend.routing">>, <<"me msg">>, [{type,<<"event">>}]) line 51
+2019-01-16 03:00:37.372 [error] <0.433.0>@Elixir.AMQP.Basic:publish:51 Supervisor 'Elixir.BinbaseBackend.MainSupervisor' had child 'Elixir.BinbaseBackend.Engine.Broadcaster' started with 'Elixir.BinbaseBackend.Engine.Broadcaster':start_link() at <0.453.0> exit with reason no function clause matching 'Elixir.AMQP.Basic':publish(ok, <<"binbase_backend.exchange">>, <<"binbase_backend.routing">>, <<"me msg">>, [{type,<<"event">>}]) line 51 in context child_terminated
+2019-01-16 03:01:55.492 [info] <0.43.0> Application lager started on node nonode@nohost
+2019-01-16 03:01:55.503 [info] <0.43.0> Application xmerl started on node nonode@nohost
+2019-01-16 03:01:55.509 [info] <0.43.0> Application jsx started on node nonode@nohost
+2019-01-16 03:01:55.515 [info] <0.43.0> Application ranch_proxy_protocol started on node nonode@nohost
+2019-01-16 03:01:55.520 [info] <0.43.0> Application recon started on node nonode@nohost
+2019-01-16 03:01:55.522 [info] <0.43.0> Application rabbit_common started on node nonode@nohost
+2019-01-16 03:01:55.535 [info] <0.43.0> Application amqp_client started on node nonode@nohost
+2019-01-16 03:01:55.537 [info] <0.43.0> Application amqp started on node nonode@nohost
+2019-01-16 03:01:55.545 [info] <0.43.0> Application ex_machina started on node nonode@nohost
+2019-01-16 03:01:55.548 [info] <0.43.0> Application phoenix_token_plug started on node nonode@nohost
+2019-01-16 03:01:55.553 [info] <0.43.0> Application phoenix_ecto started on node nonode@nohost
+2019-01-16 03:01:55.999 [warning] <0.400.0> lager_error_logger_h dropped 16 messages in the last second that exceeded the limit of 50 messages/sec
+2019-01-16 03:01:56.017 [error] <0.453.0>@Elixir.AMQP.Basic:publish:51 gen_server 'Elixir.BinbaseBackend.Engine.Broadcaster' terminated with reason: no function clause matching 'Elixir.AMQP.Basic':publish(ok, <<"binbase_backend.exchange">>, <<"binbase_backend.routing">>, <<"me msg">>, [{type,<<"event">>}]) line 51
+2019-01-16 03:01:56.053 [error] <0.453.0>@Elixir.AMQP.Basic:publish:51 CRASH REPORT Process 'Elixir.BinbaseBackend.Engine.Broadcaster' with 0 neighbours crashed with reason: no function clause matching 'Elixir.AMQP.Basic':publish(ok, <<"binbase_backend.exchange">>, <<"binbase_backend.routing">>, <<"me msg">>, [{type,<<"event">>}]) line 51
+2019-01-16 03:03:06.609 [info] <0.43.0> Application lager started on node nonode@nohost
+2019-01-16 03:03:06.620 [info] <0.43.0> Application xmerl started on node nonode@nohost
+2019-01-16 03:03:06.626 [info] <0.43.0> Application jsx started on node nonode@nohost
+2019-01-16 03:03:06.631 [info] <0.43.0> Application ranch_proxy_protocol started on node nonode@nohost
+2019-01-16 03:03:06.637 [info] <0.43.0> Application recon started on node nonode@nohost
+2019-01-16 03:03:06.638 [info] <0.43.0> Application rabbit_common started on node nonode@nohost
+2019-01-16 03:03:06.653 [info] <0.43.0> Application amqp_client started on node nonode@nohost
+2019-01-16 03:03:06.654 [info] <0.43.0> Application amqp started on node nonode@nohost
+2019-01-16 03:03:06.661 [info] <0.43.0> Application ex_machina started on node nonode@nohost
+2019-01-16 03:03:06.663 [info] <0.43.0> Application phoenix_token_plug started on node nonode@nohost
+2019-01-16 03:03:06.668 [info] <0.43.0> Application phoenix_ecto started on node nonode@nohost
+2019-01-16 03:03:06.999 [warning] <0.400.0> lager_error_logger_h dropped 16 messages in the last second that exceeded the limit of 50 messages/sec
+2019-01-16 03:03:07.188 [error] <0.453.0>@Elixir.AMQP.Basic:publish:51 gen_server 'Elixir.BinbaseBackend.Engine.Broadcaster' terminated with reason: no function clause matching 'Elixir.AMQP.Basic':publish(ok, <<"binbase_backend.exchange">>, <<"binbase_backend.routing">>, <<"me msg">>, [{type,<<"event">>}]) line 51
+2019-01-16 03:03:07.226 [error] <0.453.0>@Elixir.AMQP.Basic:publish:51 CRASH REPORT Process 'Elixir.BinbaseBackend.Engine.Broadcaster' with 0 neighbours crashed with reason: no function clause matching 'Elixir.AMQP.Basic':publish(ok, <<"binbase_backend.exchange">>, <<"binbase_backend.routing">>, <<"me msg">>, [{type,<<"event">>}]) line 51
+2019-01-16 03:05:41.688 [info] <0.43.0> Application lager started on node nonode@nohost
+2019-01-16 03:05:41.698 [info] <0.43.0> Application xmerl started on node nonode@nohost
+2019-01-16 03:05:41.703 [info] <0.43.0> Application jsx started on node nonode@nohost
+2019-01-16 03:05:41.710 [info] <0.43.0> Application ranch_proxy_protocol started on node nonode@nohost
+2019-01-16 03:05:41.715 [info] <0.43.0> Application recon started on node nonode@nohost
+2019-01-16 03:05:41.716 [info] <0.43.0> Application rabbit_common started on node nonode@nohost
+2019-01-16 03:05:41.731 [info] <0.43.0> Application amqp_client started on node nonode@nohost
+2019-01-16 03:05:41.733 [info] <0.43.0> Application amqp started on node nonode@nohost
+2019-01-16 03:05:41.739 [info] <0.43.0> Application ex_machina started on node nonode@nohost
+2019-01-16 03:05:41.743 [info] <0.43.0> Application phoenix_token_plug started on node nonode@nohost
+2019-01-16 03:05:41.748 [info] <0.43.0> Application phoenix_ecto started on node nonode@nohost
+2019-01-16 03:05:41.999 [warning] <0.400.0> lager_error_logger_h dropped 16 messages in the last second that exceeded the limit of 50 messages/sec
+2019-01-16 03:05:42.229 [error] <0.453.0>@Elixir.AMQP.Basic:publish:51 gen_server 'Elixir.BinbaseBackend.Engine.Broadcaster' terminated with reason: no function clause matching 'Elixir.AMQP.Basic':publish(ok, <<"binbase_backend.exchange">>, <<"binbase_backend.routing">>, <<"me msg">>, [{type,<<"event">>}]) line 51
+2019-01-16 03:05:42.264 [error] <0.453.0>@Elixir.AMQP.Basic:publish:51 CRASH REPORT Process 'Elixir.BinbaseBackend.Engine.Broadcaster' with 0 neighbours crashed with reason: no function clause matching 'Elixir.AMQP.Basic':publish(ok, <<"binbase_backend.exchange">>, <<"binbase_backend.routing">>, <<"me msg">>, [{type,<<"event">>}]) line 51
