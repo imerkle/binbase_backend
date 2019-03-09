@@ -20,8 +20,8 @@ config :binbase_backend, BinbaseBackend.Repo,
 config :argon2_elixir, t_cost: 2, m_cost: 8
 
 config :binbase_backend,
-  rabbitmq_host: "localhost",
-  
+  rabbitmq_host: "localhost"
+
 #if !System.get_env("TRAVIS") do
 #  import_config "test.secret.exs"
 #end

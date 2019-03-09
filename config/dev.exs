@@ -56,7 +56,7 @@ config :binbase_backend, BinbaseBackend.Repo,
   pool_size: 10
 
 config :binbase_backend,
-  rabbitmq_host: "rabbit1",
+  rabbitmq_host: "rabbit1"
 
 if !System.get_env("CIRCLECI") do
   import_config "dev.secret.exs"
