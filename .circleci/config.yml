@@ -1,0 +1,85 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2.1
+
+#orbs:
+#  heroku: circleci/heroku@0.0.5
+#  codecov: codecov/codecov@1.0.4
+  
+workflows:
+  version: 2
+  main:
+    jobs:
+      - build_test
+#      - heroku_deploy:
+#          requires:
+#            - build_test
+jobs:
+#  heroku_deploy:
+#    executor: heroku/default
+#    steps:
+#      - checkout
+#      - heroku/install
+#      - heroku/deploy-via-git:
+#          app-name: "binbasewallet"
+  build_test:
+    parallelism: 4
+    docker:
+      # specify the version you desire here
+      - image: circleci/elixir
+        environment:  # environment variables for primary container
+          MIX_ENV: test
+
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+       - image: circleci/postgres
+         #environment:  # environment variables for database
+          #POSTGRES_USER: postgres
+          #POSTGRES_DB: app_test
+          #POSTGRES_PASSWORD:
+    working_directory: ~/app
+
+    steps:  # commands that comprise the `build` job
+      - checkout  # check out source code to working directory
+
+      - run: mix local.hex --force  # install Hex locally (without prompt)
+      - run: mix local.rebar --force  # fetch a copy of rebar (without prompt)
+
+      - restore_cache:  # restores saved mix cache
+      # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
+          keys:  # list of cache keys, in decreasing specificity
+            - v1-mix-cache-{{ .Branch }}-{{ checksum "mix.lock" }}
+            - v1-mix-cache-{{ .Branch }}
+            - v1-mix-cache
+      - restore_cache:  # restores saved build cache
+          keys:
+            - v1-build-cache-{{ .Branch }}
+            - v1-build-cache
+      - run: mix do deps.get, compile  # get updated dependencies & compile them
+      - save_cache:  # generate and store mix cache
+          key: v1-mix-cache-{{ .Branch }}-{{ checksum "mix.lock" }}
+          paths: "deps"
+      - save_cache:  # make another, less specific cache
+          key: v1-mix-cache-{{ .Branch }}
+          paths: "deps"
+      - save_cache:  # you should really save one more cache (just in case)
+          key: v1-mix-cache
+          paths: "deps"
+      - save_cache: # don't forget to save a *build* cache, too
+          key: v1-build-cache-{{ .Branch }}
+          paths: "_build"
+      - save_cache: # and one more build cache for good measure
+          key: v1-build-cache
+          paths: "_build"
+
+      - run:  # special utility that stalls main process until DB is ready
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      # run tests!
+      - run: mix test
+#      - codecov/upload:
+#          file: coverage/*.json
