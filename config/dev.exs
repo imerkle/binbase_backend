@@ -55,6 +55,9 @@ config :binbase_backend, BinbaseBackend.Repo,
   hostname: "localhost",
   pool_size: 10
 
-if !System.get_env("TRAVIS") do
+config :binbase_backend,
+  rabbitmq_host: "rabbit1",
+
+if !System.get_env("CIRCLECI") do
   import_config "dev.secret.exs"
 end
