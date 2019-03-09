@@ -1,4 +1,5 @@
 defmodule BinbaseBackendWeb.TradeChannel do
+    use BinbaseBackendWeb, :channel
 
     @channel "trade"
 
@@ -8,7 +9,10 @@ defmodule BinbaseBackendWeb.TradeChannel do
 
     # Handle Events
 
-    def handle_out("trade:order", payload, socket) do
-        {:noreply, socket}
+    def handle_in("ping", payload, socket) do
+        {:reply, {:ok, %{message: "pong"}}, socket}
+    end
+    def handle_out("ping", payload, socket) do
+        {:reply, {:ok, %{message: "pongi"}}, socket}
     end    
 end

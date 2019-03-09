@@ -1,0 +1,37 @@
+version: '3.2'
+services:
+  db:
+    image: postgres:alpine  
+  app:
+    build: .
+    environment:
+      - MIX_ENV=${MIX_ENV}
+    volumes:
+      - type: bind
+        source: .
+        target: /app      
+    ports:
+      - "4000:4000"
+    depends_on:
+      - db
+      - rabbit1
+    command:
+      - ./run.sh
+  rabbit1:
+    image: "rabbitmq:3-management"
+    hostname: "rabbit1"
+    environment:
+      RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
+      RABBITMQ_DEFAULT_USER: "rabbitmq"
+      RABBITMQ_DEFAULT_PASS: "rabbitmq"
+      RABBITMQ_DEFAULT_VHOST: "/"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    labels:
+      NAME: "rabbitmq1"
+    volumes:
+      - ./rabbitmq-isolated.conf:/etc/rabbitmq/rabbitmq.config
+      #- "./rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro"
+      #- "./autocluster-0.4.1.ez:/usr/lib/rabbitmq/lib/rabbitmq_server-3.5.5/plugins/autocluster-0.4.1.ez"    
+          

@@ -52,7 +52,7 @@ defmodule BinbaseBackend.Engine.Listener do
   @doc false
   def init(_arg) do
     # Create Connection & Channel
-    {:ok, connection} = AMQP.Connection.open
+    {:ok, connection} = AMQP.Connection.open("amqp://rabbitmq:rabbitmq@rabbit1")
     {:ok, channel}    = AMQP.Channel.open(connection)
 
     # Declare Exchange & Queue
