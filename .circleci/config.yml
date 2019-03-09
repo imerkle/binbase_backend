@@ -28,14 +28,14 @@ jobs:
     parallelism: 4
     docker:
       # specify the version you desire here
-      - image: circleci/elixir
+      - image: circleci/elixir:latest
         environment:  # environment variables for primary container
           MIX_ENV: test
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
-      - image: circleci/postgres
+      - image: circleci/postgres:latest
          #environment:  # environment variables for database
           #POSTGRES_USER: postgres
           #POSTGRES_DB: app_test
