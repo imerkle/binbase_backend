@@ -42,7 +42,7 @@ defmodule BinbaseBackend.Engine.Broadcaster do
   @doc false
   def init() do
     # Create Connection & Channel
-    {:ok, connection} = AMQP.Connection.open("amqp://rabbitmq:rabbitmq@rabbit1")
+    {:ok, connection} = AMQP.Connection.open("amqp://rabbitmq:rabbitmq@localhost")
     {:ok, channel}    = AMQP.Channel.open(connection)
 
     # Declare Fanout Exchange
