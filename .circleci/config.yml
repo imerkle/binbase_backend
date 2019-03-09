@@ -46,9 +46,6 @@ jobs:
           RABBITMQ_DEFAULT_USER: "rabbitmq"
           RABBITMQ_DEFAULT_PASS: "rabbitmq"
           RABBITMQ_DEFAULT_VHOST: "/"
-        ports:
-          - "15672:15672"
-          - "5672:5672"
     working_directory: ~/app
 
     steps:  # commands that comprise the `build` job
