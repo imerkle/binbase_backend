@@ -41,16 +41,28 @@ defmodule BinbaseBackend.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
+      {:cors_plug, "~> 2.0"},
       
       {:phoenix_token_plug, "~> 0.2"},
       {:ex_machina, "~> 2.2", only: :test},
+
+      #passwords & ids
       {:comeonin, "~> 4.1"},
       {:argon2_elixir, "~> 1.3"},
       {:hashids, "~> 2.0"},
       {:haikunator, git: "https://github.com/imerkle/haikunator.git"},
+
+      #crypto funcs
       {:omni, git: "https://github.com/imerkle/omni.git"},
+
+      #rabbitmq
       {:amqp, "~> 1.1"},
-      {:ranch, "~> 1.6.2", override: true},      
+      {:ranch, "~> 1.6.2", override: true},
+
+      #email
+      {:bamboo, "~> 1.2"},
+      {:bamboo_smtp, "~> 1.6.0"},      
+
     ]
   end
 

@@ -40,5 +40,7 @@ defmodule BinbaseBackendWeb.Endpoint do
     key: "_binbase_backend_key",
     signing_salt: "L507BXXD"
 
+  plug CORSPlug, origin: "*"
+  
   plug BinbaseBackendWeb.Router
 end

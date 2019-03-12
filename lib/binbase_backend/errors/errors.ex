@@ -1,5 +1,6 @@
 defmodule BinbaseBackend.Errors do
 
+"""
   @code_list [
     "internet_error",
     "bad_params",
@@ -11,10 +12,13 @@ defmodule BinbaseBackend.Errors do
   def getCode(str) do
     Enum.find_index(@code_list, fn(x) -> x == str end)
   end
+  "err_code" => getCode(str),
+"""
+
   def returnCode(str \\ "empty_return") do
-    {:error, %{"err_code" => getCode(str), "err_msg" => str} }
+    {:error, %{"err_msg" => str} }
   end
   def returnCodeBare(str \\ "empty_return") do
-    %{"err_code" => getCode(str), "err_msg" => str}
+    %{"err_msg" => str}
   end
 end
