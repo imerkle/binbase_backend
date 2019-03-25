@@ -14,4 +14,9 @@ defmodule BinbaseBackendWeb.UserController do
 		{_, data} = Users.sign_in(params["email"], params["password"])
 	  json(conn, data)
 	end
+	@version Mix.Project.config[:version]
+	def version(conn, params) do
+		json(conn, %{"version"=>@version})
+	end
+
 end

@@ -18,7 +18,6 @@ echo "\nPostgres is available: continuing with database setup..."
 
 # Potentially Set up the database
 mix ecto.reset
-mix ecto.setup
 
 #echo "\nTesting the installation..."
 # "Proove" that install was successful by running the tests

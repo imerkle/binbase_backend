@@ -23,10 +23,13 @@ defmodule BinbaseBackendWeb.Router do
   scope "/", BinbaseBackendWeb do
     pipe_through :api_stateless #we dont need authentication here
 
-    get "/check_email", UserController, :check_email
+    get "/version", UserController, :version
 
+    get "/check_email", UserController, :check_email
     post "/create_user", UserController, :create_user
     post "/sign_in", UserController, :sign_in
+    
+    get "/get_orders", OrderController, :get_orders
   end
     
   scope "/", BinbaseBackendWeb do

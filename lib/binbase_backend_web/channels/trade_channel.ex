@@ -8,11 +8,10 @@ defmodule BinbaseBackendWeb.TradeChannel do
     end
 
     # Handle Events
-
-    def handle_in("ping", payload, socket) do
+    def handle_in("ping", _payload, socket) do
         {:reply, {:ok, %{message: "pong"}}, socket}
     end
-    def handle_out("ping", payload, socket) do
+    def handle_out("ping", _payload, socket) do
         {:reply, {:ok, %{message: "pongi"}}, socket}
     end    
 end

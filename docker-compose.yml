@@ -1,7 +1,9 @@
 version: '3.2'
 services:
   db:
-    image: postgres:alpine  
+    image: postgres:alpine
+    ports:
+      - "5432:5432"    
   app:
     build: .
     environment:
