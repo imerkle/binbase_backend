@@ -17,8 +17,10 @@ services:
     depends_on:
       - db
       - rabbit1
-    command:
-      - ./run.sh
+    environment:
+      WAIT_HOSTS: db:5432, rabbit1:5672
+    command: sh -c "/wait && /app/run.sh"   
+# - ./wait-for-it.sh db:5432 -- ./wait-for-it.sh rabbit1:5672 -- ./run.sh
   rabbit1:
     image: "rabbitmq:3-management"
     hostname: "rabbit1"
