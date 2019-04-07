@@ -5,7 +5,7 @@ defmodule BinbaseBackend.Accounts.Users do
 	alias BinbaseBackend.Errors
 	alias BinbaseBackend.Emails
 	
-	@max_age 86400
+	#@max_age 86400
 	@user_salt Application.get_env(:binbase_backend, :phx_token_salt)
 	def check_email(email) do 
 	user =  User
@@ -24,7 +24,7 @@ defmodule BinbaseBackend.Accounts.Users do
 				Emails.Email.welcome_email(email) |> Emails.Mailer.deliver_later
 				{:ok, %{id: user.id, access_token: token}}
 		else
-			err -> Errors.returnCode("user_already_exists")
+			_err -> Errors.returnCode("user_already_exists")
 		end
 	end
 	

@@ -16,69 +16,54 @@ alias BinbaseBackend.Accounts.Users
 
 {_, data} = Users.create_user(%{email: "a@b.com", password: "123", invite_code: ""})
 
-%Order{} 
-|> Order.changeset(%{
-    maker_id: data.id,
-    token_rel: "BTC",
-    token_base: "USDT",
-    kind: 0,
-    price: 4000,
-    amount: 0.95,
-})
-|> Orders.create_order()
+defmodule Mord do
+    def make_order([head | tail], data) do
+        %Order{} 
+        |> Order.changeset(%{
+            maker_id: data.id,
+            token_rel: "BTC",
+            token_base: "USDT",
+            kind: head["kind"],
+            price: head["price"],
+            amount: head["amount"],
+        })
+        |> Orders.create_order()    
+        make_order(tail, data)
+    end
+    def make_order([], _) do
+    end
+end
 
-%Order{} 
-|> Order.changeset(%{
-    maker_id: data.id,
-    token_rel: "BTC",
-    token_base: "USDT",
-    kind: 0,
-    price: 4010,
-    amount: 1.3,
-})
-|> Orders.create_order()
-
-%Order{} 
-|> Order.changeset(%{
-    maker_id: data.id,
-    token_rel: "BTC",
-    token_base: "USDT",
-    kind: 0,
-    price: 4005,
-    amount: 5.8,
-})
-|> Orders.create_order()
-
-
-%Order{} 
-|> Order.changeset(%{
-    maker_id: data.id,
-    token_rel: "BTC",
-    token_base: "USDT",
-    kind: 1,
-    price: 4055,
-    amount: 3.8,
-})
-|> Orders.create_order()
-
-%Order{} 
-|> Order.changeset(%{
-    maker_id: data.id,
-    token_rel: "BTC",
-    token_base: "USDT",
-    kind: 1,
-    price: 4058,
-    amount: 0.08,
-})
-|> Orders.create_order()
-
-%Order{} 
-|> Order.changeset(%{
-    maker_id: data.id,
-    token_rel: "BTC",
-    token_base: "USDT",
-    kind: 1,
-    price: 4023,
-    amount: 1.4,
-})
-|> Orders.create_order()
+x = [
+    %{
+        "kind" => 0,
+        "price" => 4000.04,
+        "amount" => 0.435
+    },
+    %{
+        "kind" => 0,
+        "price" => 4000.34,
+        "amount" => 0.0455
+    },    
+    %{
+        "kind" => 0,
+        "price" => 4002.84,
+        "amount" => 3.867
+    },
+    %{
+        "kind" => 0,
+        "price" => 4011.67,
+        "amount" => 1.545
+    },
+    %{
+        "kind" => 0,
+        "price" => 4010.31,
+        "amount" => 0.5
+    },
+    %{
+        "kind" => 0,
+        "price" => 4000.04,
+        "amount" => 1.5
+    },                
+]
+Mord.make_order(x, data)

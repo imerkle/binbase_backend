@@ -40,7 +40,7 @@ defmodule BinbaseBackend.Engine.Broadcaster do
 
   # Initialize State
   @doc false
-  def init() do
+  def init(:ok) do
     # Create Connection & Channel
     {:ok, connection} = AMQP.Connection.open("amqp://rabbitmq:rabbitmq@" <> Application.get_env(:binbase_backend, :rabbitmq_host) )
     {:ok, channel}    = AMQP.Channel.open(connection)
@@ -60,7 +60,7 @@ defmodule BinbaseBackend.Engine.Broadcaster do
     # Broadcast on both Websocket and RabbitMQ
     #, [type: "event"]
     BinbaseBackendWeb.Endpoint.broadcast!("trade", "ping", %{payload: payload})
-    AMQP.Basic.publish(channel, @exchange, @routing, payload) 
+    AMQP.Basic.publish(channel, @exchange, @routing, payload, [type: "trade"]) 
     {:noreply, channel}
   end
 

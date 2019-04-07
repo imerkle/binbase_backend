@@ -1,17 +1,14 @@
-version: '3.2'
+version: '3'
 services:
   db:
     image: postgres:alpine
     ports:
-      - "5432:5432"    
-  app:
+      - "5432:5432"
+  binbase-backend:
+    image: 'dsslimshaddy/binbase_backend'
     build: .
     environment:
       - MIX_ENV=${MIX_ENV}
-    volumes:
-      - type: bind
-        source: .
-        target: /app      
     ports:
       - "4000:4000"
     depends_on:
@@ -20,22 +17,19 @@ services:
     environment:
       WAIT_HOSTS: db:5432, rabbit1:5672
     command: sh -c "/wait && /app/run.sh"   
-# - ./wait-for-it.sh db:5432 -- ./wait-for-it.sh rabbit1:5672 -- ./run.sh
+    labels:
+      kompose.service.expose: "binbase-backend.k8"
   rabbit1:
-    image: "rabbitmq:3-management"
+    image: rabbitmq:3.7-management-alpine
     hostname: "rabbit1"
     environment:
       RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
       RABBITMQ_DEFAULT_USER: "rabbitmq"
       RABBITMQ_DEFAULT_PASS: "rabbitmq"
       RABBITMQ_DEFAULT_VHOST: "/"
+      RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS: "-rabbit log [{console,[{enabled,false}]}]"
     ports:
       - "15672:15672"
       - "5672:5672"
     labels:
       NAME: "rabbitmq1"
-    volumes:
-      - ./rabbitmq-isolated.conf:/etc/rabbitmq/rabbitmq.config
-      #- "./rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro"
-      #- "./autocluster-0.4.1.ez:/usr/lib/rabbitmq/lib/rabbitmq_server-3.5.5/plugins/autocluster-0.4.1.ez"    
-          

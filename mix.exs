@@ -56,7 +56,7 @@ defmodule BinbaseBackend.MixProject do
       {:omni, git: "https://github.com/imerkle/omni.git"},
 
       #rabbitmq
-      {:amqp, "~> 1.1"},
+      {:amqp, "~> 1.1.1"},
       {:ranch, "~> 1.6.2", override: true},
 
       #email

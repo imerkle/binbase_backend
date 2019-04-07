@@ -4,10 +4,6 @@
 
 set -e
 
-
-# Ensure the app's dependencies are installed
-mix deps.get
-
 # Potentially Set up the database
 mix ecto.reset
 

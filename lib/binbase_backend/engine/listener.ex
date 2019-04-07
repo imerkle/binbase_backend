@@ -26,7 +26,6 @@ defmodule BinbaseBackend.Engine.Listener do
 
   @queue    "binbase_backend.queue"
   @exchange "binbase_backend.exchange"
-  @rpc      ""
   @routing  "binbase_backend.routing"
 
 
@@ -50,7 +49,7 @@ defmodule BinbaseBackend.Engine.Listener do
 
   # Initialize State
   @doc false
-  def init(_arg) do
+  def init(:ok) do
     # Create Connection & Channel
     {:ok, connection} = AMQP.Connection.open("amqp://rabbitmq:rabbitmq@" <> Application.get_env(:binbase_backend, :rabbitmq_host))
     {:ok, channel}    = AMQP.Channel.open(connection)
@@ -91,13 +90,15 @@ defmodule BinbaseBackend.Engine.Listener do
 
 
   # Handle unknown message types
-  defp consume(_channel, payload, meta) do
+  defp consume(_channel, _payload, meta) do
     #[:app_id, :cluster_id, :consumer_tag, :content_encoding, :content_type, :correlation_id, :delivery_tag, :exchange, :expiration, :headers, :message_id,:persistent, :priority, :redelivered, :reply_to, :routing_key, :timestamp, :type, :user_id]
 
     Logger.error("Unknown Message Type. Supplied Metadata: #{inspect(meta)}")
   end
 
-
+  defp consume(_channel, payload, %{type: "trade"}) do
+    Logger.debug("Message Type: Trade Dispatch")
+end
 
 
 end

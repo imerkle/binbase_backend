@@ -16,7 +16,7 @@ defmodule BinbaseBackend.Order do
   end
 
   @required_fields ~w(maker_id token_rel token_base kind price amount stop_price)a
-  @optional_fields ~w()
+#  @optional_fields ~w()
 
   @doc false
   def changeset(orders, attrs) do

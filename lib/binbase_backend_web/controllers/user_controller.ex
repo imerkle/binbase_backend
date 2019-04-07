@@ -15,7 +15,7 @@ defmodule BinbaseBackendWeb.UserController do
 	  json(conn, data)
 	end
 	@version Mix.Project.config[:version]
-	def version(conn, params) do
+	def version(conn, _) do
 		json(conn, %{"version"=>@version})
 	end
 
