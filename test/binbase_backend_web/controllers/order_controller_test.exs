@@ -2,7 +2,6 @@ defmodule BinbaseBackendWeb.OrderControllerTest do
   use BinbaseBackendWeb.ConnCase
 
   import BinbaseBackend.Factory
-  alias BinbaseBackend.Errors
 
   test "create_order/1", %{conn: conn} do
     order = %{"token_rel" => "BTC", "token_base" => "USDT", "kind" => 0, "price" => 3854, "amount" => 500}

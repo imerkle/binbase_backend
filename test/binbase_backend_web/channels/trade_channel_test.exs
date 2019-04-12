@@ -4,7 +4,7 @@ defmodule BinbaseBackendWeb.TradeChannelTest do
 
     setup do
     {:ok, _, socket} =
-        socket("main_socket", %{})
+        socket(BinbaseBackendWeb.MainSocket,"main_socket", %{})
         |> subscribe_and_join(BinbaseBackendWeb.TradeChannel, "trade")
 
     {:ok, socket: socket}
@@ -12,7 +12,7 @@ defmodule BinbaseBackendWeb.TradeChannelTest do
 
     test "ping replies with status ok", %{socket: socket} do
         user = insert_user()
-        order = insert_order(user.id)
+        _order = insert_order(user.id)
         ref = push socket, "ping", %{"hello" => "there"}
         assert_reply ref, :ok, %{message: "pong"}
     end

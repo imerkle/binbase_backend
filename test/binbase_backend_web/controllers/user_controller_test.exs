@@ -28,7 +28,7 @@ defmodule BinbaseBackendWeb.UserControllerTest do
       |> get(Routes.user_path(conn, :check_email, %{"email" => "not_found@example.com"}))
       |> json_response(200)
 
-      assert response == Errors.returnCodeBare("not_found")
+      assert response == Errors.returnCodeBare("user_not_found")
   end
 
   test "check_email/1 works", %{conn: conn} do

@@ -1,22 +1,9 @@
 defmodule BinbaseBackendWeb.OrderController do
     use BinbaseBackendWeb, :controller
-    alias BinbaseBackend.Order
     alias BinbaseBackend.Orders
     
     def create_order(conn, %{"token_rel" => token_rel, "token_base" => token_base, "kind" => kind, "price" => price, "amount" => amount}) do
-
-        market_id = BinbaseBackend.Utils.market_id(token_rel, token_base)
-
-        {_, data} = 
-        %Order{} 
-        |> Order.changeset(%{
-            maker_id: conn.assigns.user,
-            market_id: market_id,
-            kind: kind,
-            price: price,
-            amount: amount,
-        })
-        |> Orders.create_order()
+      {_, data} = Orders.create_order(conn.assigns.user, token_rel, token_base, kind, price, amount)
 	  json(conn, data)
     end
     def get_orders(conn, %{"token_rel" => token_rel, "token_base" => token_base, "kind" => kind}) do

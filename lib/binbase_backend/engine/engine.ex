@@ -15,8 +15,8 @@ defmodule BinbaseBackend.Engine do
         end
         add_order(order, trades)
     end
-
-    defp scan_orders([head|tail], order, modified_orders \\ [], trades \\ []) do
+    defp scan_orders(orderbook, order, modified_orders \\ [], trades \\ [])
+    defp scan_orders([head|tail], order, modified_orders, trades) do
         if (order["kind"] == 0 and head["price"] <= order["price"]) or (order["kind"] == 1 and head["price"] >= order["price"]) do
 
             har = head |> rem_amount()

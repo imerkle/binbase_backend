@@ -5,7 +5,7 @@ defmodule BinbaseBackend.MixProject do
     [
       app: :binbase_backend,
       version: "0.1.0",
-      elixir: "~> 1.5",
+      elixir: "~> 1.8",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
@@ -51,7 +51,6 @@ defmodule BinbaseBackend.MixProject do
       {:comeonin, "~> 4.1"},
       {:argon2_elixir, "~> 1.3"},
       {:hashids, "~> 2.0"},
-      {:haikunator, git: "https://github.com/imerkle/haikunator.git"},
 
       #crypto funcs
       {:omni, git: "https://github.com/imerkle/omni.git"},

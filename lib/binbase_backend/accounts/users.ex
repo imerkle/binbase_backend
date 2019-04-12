@@ -21,7 +21,9 @@ defmodule BinbaseBackend.Accounts.Users do
 	def create_user(%{email: email, password: password, invite_code: invite_code}) do
 		with {:ok, user} <- BinbaseBackend.Repo.insert(User.changeset(%User{},%{email: email, password: password, invite_code: invite_code})) do
 				token = Phoenix.Token.sign(BinbaseBackendWeb.Endpoint, @user_salt, user.id)
-				Emails.Email.welcome_email(email) |> Emails.Mailer.deliver_later
+				if Mix.env() == :prod do
+					Emails.Email.welcome_email(email) |> Emails.Mailer.deliver_later
+				end
 				{:ok, %{id: user.id, access_token: token}}
 		else
 			_err -> Errors.returnCode("user_already_exists")

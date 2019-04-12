@@ -28,7 +28,7 @@ defmodule BinbaseBackend.Accounts.User do
     |> unique_constraint(:email)
     |> put_change(:encrypted_password, Comeonin.Argon2.hashpwsalt(attrs[:password]))
     |> put_invite(attrs[:invite_code])
-    |> put_change(:phishing_code, Haikunator.build(0, "", true) )
+    |> put_change(:phishing_code, :rand.uniform(10000) |> Integer.to_string() )
   end
 
   defp put_invite(cset, invite_code) do

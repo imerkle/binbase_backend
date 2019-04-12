@@ -11,22 +11,13 @@
 # and so on) as they will fail if something goes wrong.
 
 alias BinbaseBackend.Orders
-alias BinbaseBackend.Order
 alias BinbaseBackend.Accounts.Users
 
 {_, data} = Users.create_user(%{email: "a@b.com", password: "123", invite_code: ""})
 
 defmodule Mord do
     def make_order([head | tail], data) do
-        %Order{} 
-        |> Order.changeset(%{
-            maker_id: data.id,
-            market_id: 0,
-            kind: head["kind"],
-            price: head["price"],
-            amount: head["amount"],
-        })
-        |> Orders.create_order()    
+        Orders.create_order(data.id, "BTC", "USDT", head["kind"], head["price"], head["amount"])
         make_order(tail, data)
     end
     def make_order([], _) do
@@ -65,4 +56,7 @@ x = [
         "amount" => 1.5
     },                
 ]
-Mord.make_order(x, data)
+if Mix.env() == :dev do
+    Mord.make_order(x, data)
+end
+
