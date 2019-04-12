@@ -53,7 +53,7 @@ defmodule BinbaseBackend.Engine do
             end || {order, modified_orders ++ [modified_order], trades}
         end || {order, modified_orders, trades}
     end
-    defp scan_orders([], order, modified_orders \\ [], trades \\ []) do
+    defp scan_orders([], order, modified_orders, trades) do
         {order, modified_orders, trades}
     end    
     defp rem_amount(order) do
