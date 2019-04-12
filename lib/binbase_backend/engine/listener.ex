@@ -89,16 +89,16 @@ defmodule BinbaseBackend.Engine.Listener do
   end
 
 
+  defp consume(_channel, payload, %{type: "trade"}) do
+    BinbaseBackend.Engine.match(payload |> Jason.decode!())
+  end
+  
   # Handle unknown message types
   defp consume(_channel, _payload, meta) do
     #[:app_id, :cluster_id, :consumer_tag, :content_encoding, :content_type, :correlation_id, :delivery_tag, :exchange, :expiration, :headers, :message_id,:persistent, :priority, :redelivered, :reply_to, :routing_key, :timestamp, :type, :user_id]
 
     Logger.error("Unknown Message Type. Supplied Metadata: #{inspect(meta)}")
   end
-
-  defp consume(_channel, payload, %{type: "trade"}) do
-    Logger.debug("Message Type: Trade Dispatch")
-end
 
 
 end

@@ -10,8 +10,7 @@ defmodule BinbaseBackendWeb.OrderControllerTest do
     |> put_req_header("authorization", "Bearer #{token()}")
     |> post(Routes.order_path(conn, :create_order, order))
     |> json_response(200)
-    
-    assert response["token_base"] == "USDT"
+
     assert response["price"] == 3854
   end
 

@@ -44,6 +44,7 @@ defmodule BinbaseBackend.MixProject do
       {:cors_plug, "~> 2.0"},
       
       {:phoenix_token_plug, "~> 0.2"},
+      {:con_cache, "~> 0.13"},
       {:ex_machina, "~> 2.2", only: :test},
 
       #passwords & ids

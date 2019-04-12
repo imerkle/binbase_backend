@@ -21,8 +21,7 @@ defmodule Mord do
         %Order{} 
         |> Order.changeset(%{
             maker_id: data.id,
-            token_rel: "BTC",
-            token_base: "USDT",
+            market_id: 0,
             kind: head["kind"],
             price: head["price"],
             amount: head["amount"],

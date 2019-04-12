@@ -10,9 +10,10 @@ defmodule BinbaseBackend.Application do
     children = [
       BinbaseBackend.MainSupervisor,
       # Start the endpoint when the application starts
-      BinbaseBackendWeb.Endpoint
+      BinbaseBackendWeb.Endpoint,
       # Starts a worker by calling: BinbaseBackend.Worker.start_link(arg)
       # {BinbaseBackend.Worker, arg},
+      {ConCache, [name: :orderbook, ttl_check_interval: false]},
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
