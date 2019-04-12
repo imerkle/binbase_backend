@@ -36,8 +36,7 @@ defmodule BinbaseBackend.Factory do
 
   def order_factory do
         %Order{
-            token_rel: "BTC",
-            token_base: "USDT",
+            market_id: 1,
             kind: 0,
             price: 3500,
             amount: 500,          
