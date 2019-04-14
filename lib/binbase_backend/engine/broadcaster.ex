@@ -1,6 +1,6 @@
 defmodule BinbaseBackend.Engine.Broadcaster do
   use GenServer
-  
+
   @exchange "binbase_backend.exchange"
   @routing  "binbase_backend.routing"
 
@@ -26,8 +26,8 @@ defmodule BinbaseBackend.Engine.Broadcaster do
 
 
   @doc "Broadcast event on the direct exchange"
-  def broadcast(payload) do
-    GenServer.cast(__MODULE__, {:broadcast, payload})
+  def broadcast(payload, cmd) do
+    GenServer.cast(__MODULE__, {:broadcast, payload, cmd})
   end
 
 
@@ -55,12 +55,12 @@ defmodule BinbaseBackend.Engine.Broadcaster do
 
   # Handle cast for :broadcast
   @doc false
-  def handle_cast({:broadcast, payload}, channel) do
+  def handle_cast({:broadcast, payload, cmd}, channel) do
 
     # Broadcast on both Websocket and RabbitMQ
     #, [type: "event"]
-    BinbaseBackendWeb.Endpoint.broadcast!("trade", "ping", %{payload: payload})
-    AMQP.Basic.publish(channel, @exchange, @routing, payload, [type: "trade"]) 
+    BinbaseBackendWeb.Endpoint.broadcast!(cmd, "ping", %{payload: payload})
+    AMQP.Basic.publish(channel, @exchange, @routing, payload, [type: cmd])
     {:noreply, channel}
   end
 

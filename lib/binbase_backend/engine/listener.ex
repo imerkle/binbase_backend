@@ -89,10 +89,14 @@ defmodule BinbaseBackend.Engine.Listener do
   end
 
 
-  defp consume(_channel, payload, %{type: "trade"}) do
+  defp consume(_channel, payload, %{type: "match"}) do
     BinbaseBackend.Engine.match(payload |> Jason.decode!())
   end
-  
+
+  defp consume(_channel, payload, %{type: "update_order"}) do
+    BinbaseBackend.Orders.update_order(payload |> Jason.decode!())
+  end
+
   # Handle unknown message types
   defp consume(_channel, _payload, meta) do
     #[:app_id, :cluster_id, :consumer_tag, :content_encoding, :content_type, :correlation_id, :delivery_tag, :exchange, :expiration, :headers, :message_id,:persistent, :priority, :redelivered, :reply_to, :routing_key, :timestamp, :type, :user_id]
