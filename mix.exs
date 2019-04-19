@@ -7,10 +7,11 @@ defmodule BinbaseBackend.MixProject do
       version: "0.1.0",
       elixir: "~> 1.8",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:phoenix, :gettext] ++ Mix.compilers(),
+      compilers: [:phoenix, :gettext, :rustler] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      rustler_crates: rustler_crates(),
+      deps: deps(),
     ]
   end
 
@@ -42,7 +43,7 @@ defmodule BinbaseBackend.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:cors_plug, "~> 2.0"},
-      
+
       {:phoenix_token_plug, "~> 0.2"},
       {:con_cache, "~> 0.13"},
       {:ex_machina, "~> 2.2", only: :test},
@@ -61,8 +62,10 @@ defmodule BinbaseBackend.MixProject do
 
       #email
       {:bamboo, "~> 1.2"},
-      {:bamboo_smtp, "~> 1.6.0"},      
+      {:bamboo_smtp, "~> 1.6.0"},
 
+      #rustler
+      {:rustler, "~> 0.20.0"},
     ]
   end
 
@@ -79,4 +82,14 @@ defmodule BinbaseBackend.MixProject do
       test: ["ecto.reset --quiet", "test"]
     ]
   end
+
+  defp rustler_crates do
+    [binbasebackend_engine_native: [
+      path: "native/binbasebackend_engine_native",
+      mode: rustc_mode(Mix.env)
+    ]]
+  end
+
+  defp rustc_mode(:prod), do: :release
+  defp rustc_mode(_), do: :debug
 end

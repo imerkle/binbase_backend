@@ -2,15 +2,32 @@ defmodule BinbaseBackend.Engine do
     alias BinbaseBackend.Orders
 
     def match(order) do
+        kind = order["kind"]
         kind_inverse = order["kind"] |> BinbaseBackend.Utils.inverse_int()
-        orderbook_inverse = get_orderbook(order["market_id"], kind_inverse)
+        market_id = order["market_id"]
 
-        {order, modified_orders, trades} = scan_orders(orderbook_inverse, order)
-        if length(modified_orders) > 0 do
-           mo = update_orders(orderbook_inverse, modified_orders)
-           set_orderbook(mo, order["market_id"], kind_inverse)
+        orderbook = get_orderbook(market_id, kind)
+        orderbook_inverse = get_orderbook(market_id, kind_inverse)
+
+        outputs = BinbaseBackend.Engine.Native.match_order(order, orderbook, orderbook_inverse)
+
+        set_orderbook(outputs.orderbook, market_id, kind)
+        update_order_db(outputs.order)
+        if length(outputs.modified_orders) > 0 do
+            Enum.map(outputs.modified_orders, fn x->
+                update_order_db(x)
+            end)
+            set_orderbook(outputs.orderbook_inverse, market_id, kind_inverse)
         end
-        add_order(order, trades)
+
+
+
+        #{order, modified_orders, trades} = scan_orders(orderbook_inverse, order)
+        #if length(modified_orders) > 0 do
+           #mo = update_orders(orderbook_inverse, modified_orders)
+           #set_orderbook(mo, order["market_id"], kind_inverse)
+        #end
+        #add_order(order, trades)
     end
     defp scan_orders(orderbook, order, modified_orders \\ [], trades \\ [])
     defp scan_orders([head|tail], order, modified_orders, trades) do
@@ -108,7 +125,7 @@ defmodule BinbaseBackend.Engine do
     defp update_order_db(order) do
         case Mix.env() do
             :test -> Orders.update_order(order)
-            n when n in [:dev, :prod] -> Engine.Broadcaster.broadcast(order |> Jason.encode!(), "update_order")
+            n when n in [:dev, :prod] -> BinbaseBackend.Engine.Broadcaster.broadcast(order |> Jason.encode!(), "update_order")
         end
 
     end

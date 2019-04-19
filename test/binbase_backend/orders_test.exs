@@ -45,4 +45,8 @@ defmodule BinbaseBackend.OrdersTest do
             assert BinbaseBackend.Repo.get(BinbaseBackend.Order, x.id).amount_filled == x.amount
         end)
     end
+
+    test "nifs" do
+        #assert BinbaseBackend.Engine.Native.add(1,2)  == {:ok, 3}
+    end
 end
