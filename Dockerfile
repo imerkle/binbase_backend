@@ -9,6 +9,9 @@ FROM elixir:1.8-alpine
 # Install packages
 RUN apk update && apk add --virtual build-dependencies build-base gcc wget git bash
 
+#install rust
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
+
 # Install Phoenix packages
 RUN mix local.hex --force
 RUN mix local.rebar --force
