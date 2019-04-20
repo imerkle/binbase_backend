@@ -52,8 +52,12 @@ jobs:
       - checkout  # check out source code to working directory
 
       - run: curl https://sh.rustup.rs -sSf | sh -s -- -y
-      - run: source $HOME/.cargo/env
-      - run: cargo --version
+      - run:
+           name: Print rustc and cargo versions
+           command: |
+             source $HOME/.cargo/env
+             rustc --version
+             cargo --version
       - run: mix local.hex --force  # install Hex locally (without prompt)
       - run: mix local.rebar --force  # fetch a copy of rebar (without prompt)
       - restore_cache:  # restores saved mix cache
