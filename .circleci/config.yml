@@ -53,6 +53,7 @@ jobs:
 
       - run: curl https://sh.rustup.rs -sSf | sh -s -- -y
       - run: source $HOME/.cargo/env
+      - run: cargo --version
       - run: mix local.hex --force  # install Hex locally (without prompt)
       - run: mix local.rebar --force  # fetch a copy of rebar (without prompt)
       - restore_cache:  # restores saved mix cache
