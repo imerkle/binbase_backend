@@ -28,7 +28,6 @@ jobs:
     parallelism: 4
     docker:
       # specify the version you desire here
-      - image: circleci/rust:latest
       - image: circleci/elixir:latest
         environment:  # environment variables for primary container
           MIX_ENV: test
@@ -52,6 +51,7 @@ jobs:
     steps:  # commands that comprise the `build` job
       - checkout  # check out source code to working directory
 
+      - run: curl https://sh.rustup.rs -sSf | sh -s -- -y
       - run: mix local.hex --force  # install Hex locally (without prompt)
       - run: mix local.rebar --force  # fetch a copy of rebar (without prompt)
       - restore_cache:  # restores saved mix cache
