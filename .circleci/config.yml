@@ -28,6 +28,7 @@ jobs:
     parallelism: 4
     docker:
       # specify the version you desire here
+      - image: circleci/rust:latest
       - image: circleci/elixir:latest
         environment:  # environment variables for primary container
           MIX_ENV: test
@@ -53,7 +54,6 @@ jobs:
 
       - run: mix local.hex --force  # install Hex locally (without prompt)
       - run: mix local.rebar --force  # fetch a copy of rebar (without prompt)
-
       - restore_cache:  # restores saved mix cache
       # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
           keys:  # list of cache keys, in decreasing specificity
