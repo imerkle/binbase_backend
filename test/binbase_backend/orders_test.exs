@@ -10,28 +10,28 @@ defmodule BinbaseBackend.OrdersTest do
         #sell orders created to match itselves
         orders = [
             %{
-                "kind" => 0,
-                "price" => 4000,
+                "kind" => false,
+                "price" => 6001,
                 "amount" => 100,
             },
             %{
-                "kind" => 0,
-                "price" => 4010,
+                "kind" => false,
+                "price" => 6010,
                 "amount" => 200,
             },
             %{
-                "kind" => 1,
-                "price" => 4000,
+                "kind" => true,
+                "price" => 6001,
                 "amount" => 500,
             },
             %{
-                "kind" => 0,
-                "price" => 4020,
+                "kind" => false,
+                "price" => 6020,
                 "amount" => 250,
             },
             %{
-                "kind" => 1,
-                "price" => 4018,
+                "kind" => true,
+                "price" => 6018,
                 "amount" => 50,
             },
         ]

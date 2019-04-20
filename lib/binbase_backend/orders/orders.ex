@@ -33,13 +33,13 @@ defmodule BinbaseBackend.Orders do
     q = Order
     |> where([x], x.market_id == ^market_id and x.kind == ^kind)
 
-    q = if kind == 0, do: q |> order_by(desc: :price), else: q |> order_by(asc: :price)
+    q = if kind == false, do: q |> order_by(desc: :price), else: q |> order_by(asc: :price)
 
     q
     |> limit(^lm)
     |> Repo.all()
   end
   def update_order(order) do
-    %Order{id: order["id"]} |> Order.changeset(%{amount_filled: order["amount_filled"]}) |> Repo.update()
+    %Order{id: order.id} |> Order.changeset(%{amount_filled: order.amount_filled}) |> Repo.update()
   end
 end

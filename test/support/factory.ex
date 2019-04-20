@@ -5,7 +5,7 @@ defmodule BinbaseBackend.Factory do
   alias BinbaseBackend.Accounts.User
   alias BinbaseBackend.Order
   alias BinbaseBackend.Orders
-  
+
   @pass "pass"
 
   # User factory
@@ -37,13 +37,13 @@ defmodule BinbaseBackend.Factory do
   def order_factory do
         %Order{
             market_id: 1,
-            kind: 0,
+            kind: false,
             price: 3500,
-            amount: 500,          
+            amount: 500,
         }
   end
   def insert_order(id) do
     build(:order) |> Order.changeset(%{maker_id: id}) |> Ecto.Changeset.apply_changes() |> insert
-  end  
+  end
 
 end

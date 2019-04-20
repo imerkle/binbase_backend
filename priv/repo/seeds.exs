@@ -26,35 +26,35 @@ end
 
 x = [
     %{
-        "kind" => 0,
+        "kind" => false,
         "price" => 4000.04,
         "amount" => 0.435
     },
     %{
-        "kind" => 0,
+        "kind" => false,
         "price" => 4000.34,
         "amount" => 0.0455
-    },    
+    },
     %{
-        "kind" => 0,
+        "kind" => false,
         "price" => 4002.84,
         "amount" => 3.867
     },
     %{
-        "kind" => 0,
+        "kind" => false,
         "price" => 4011.67,
         "amount" => 1.545
     },
     %{
-        "kind" => 0,
+        "kind" => false,
         "price" => 4010.31,
         "amount" => 0.5
     },
     %{
-        "kind" => 0,
+        "kind" => false,
         "price" => 4000.04,
         "amount" => 1.5
-    },                
+    },
 ]
 if Mix.env() == :dev do
     Mord.make_order(x, data)

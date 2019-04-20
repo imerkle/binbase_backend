@@ -6,7 +6,7 @@ defmodule BinbaseBackend.Order do
   schema "orders" do
     field :maker_id, :integer
     field :market_id, :integer
-    field :kind, :integer
+    field :kind, :boolean
     field :price, :float
     field :amount, :float
     field :amount_filled, :float

@@ -9,17 +9,17 @@ pub struct Order{
     maker_id: u32,
     market_id: u16,
     kind: bool,
-    price: u32,
-    amount: u32,
-    amount_filled: u32,
-    stop_price: u32,
+    price: f32,
+    amount: f32,
+    amount_filled: f32,
+    stop_price: f32,
 }
 
 #[derive(NifStruct)]
 #[module = "BinbaseBackend.Trade"]
 pub struct Trade{
-    price: u32,
-    amount: u32,
+    price: f32,
+    amount: f32,
     buy_id: u32,
     sell_id: u32,
 }
@@ -33,7 +33,7 @@ pub struct Outputs{
     pub modified_orders: Vec<Order>,
 }
 
-pub fn scan_orders(orderbook: &Vec<Order>, order: Order) -> (Order, Vec<Order>, Vec<Trade>){
+pub fn scan_orders(orderbook: &Vec<Order>, mut order: Order) -> (Order, Vec<Order>, Vec<Trade>){
     let mut trades: Vec<Trade> = vec![];
     let mut modified_orders: Vec<Order> = vec![];
 
@@ -43,15 +43,15 @@ pub fn scan_orders(orderbook: &Vec<Order>, order: Order) -> (Order, Vec<Order>, 
             let har = head.rem_amount();
             let oar =  order.rem_amount();
 
-            let (oar, har, trade_amount) = extract(oar, har);
+            let (orm, hrm, trade_amount) = extract(oar, har);
 
 
-            let order = order.update_amount(oar);
-            let head = head.update_amount(har);
+            order = order.update_amount(orm);
+            let head = head.update_amount(hrm);
             
 
             let (buy_id, sell_id) = get_ids(&order, &head);
-            if trade_amount != 0 {
+            if trade_amount != 0.0 {
                 trades.push(Trade{
                     price: head.price,
                     amount: trade_amount,
@@ -60,7 +60,7 @@ pub fn scan_orders(orderbook: &Vec<Order>, order: Order) -> (Order, Vec<Order>, 
                 })
             }
             modified_orders.push(head);
-            if oar == 0 {
+            if orm == 0.0 {
                 break;
             }
         }
@@ -74,21 +74,20 @@ fn get_ids(order: &Order, head: &Order) -> (u32, u32){
         (head.id, order.id)
     }
 }
-fn extract(oar: u32, har: u32) -> (u32, u32, u32){
+fn extract(oar: f32, har: f32) -> (f32, f32, f32){
     if oar > har {
-        let x = oar - har;
-        (x, 0, x)
+        (oar - har, 0.0, har)
     }else if oar < har {
-        (0, har - oar, oar)
+        (0.0, har - oar, oar)
     }else{
-        (0, 0, oar)
+        (0.0, 0.0, oar)
     } 
 }
 impl Order{
-    fn rem_amount(&self) -> u32 {
+    fn rem_amount(&self) -> f32 {
         self.amount - self.amount_filled
     }
-    fn update_amount(&self, amount_remaining: u32) -> Order{
+    fn update_amount(&self, amount_remaining: f32) -> Order{
         let order = Order{
             id: self.id,
             maker_id: self.maker_id,
@@ -97,7 +96,7 @@ impl Order{
             price: self.price,
             amount: self.amount,
             amount_filled: self.amount - amount_remaining,
-            stop_price: self.stop_price,            
+            stop_price: self.stop_price,
         };
         order
     }
@@ -111,9 +110,9 @@ pub fn add_order(mut orderbook: Vec<Order>, order: Order, tl: usize) -> Vec<Orde
     } else if tl == 0 {
         orderbook.push(order);
         if kind == false {
-            orderbook.sort_by(|a, b| a.amount.cmp(&b.amount).reverse().then(a.id.cmp(&b.id)));
+            orderbook.sort_by(|a, b| a.amount.partial_cmp(&b.amount).unwrap().reverse().then(a.id.partial_cmp(&b.id).unwrap()));
         }else {
-            orderbook.sort_by(|a, b| a.amount.cmp(&b.amount).then(a.id.cmp(&b.id)));
+            orderbook.sort_by(|a, b| a.amount.partial_cmp(&b.amount).unwrap().then(a.id.partial_cmp(&b.id).unwrap()));
         }
     }
     orderbook
@@ -139,23 +138,23 @@ mod tests {
         let orderbook = vec![Order{
             id: 0,
             kind: false,
-            price: 4000,
-            amount: 50,
+            price: 4000.0,
+            amount: 50.0,
             ..Default::default()
         },
         Order{
             id: 1,
             kind: false,
-            price: 4010,
-            amount: 200,
+            price: 4010.0,
+            amount: 200.0,
             ..Default::default()
         }        
         ];
         let order = Order{
             id: 2,
             kind: true,
-            price: 4000,
-            amount: 250,
+            price: 4000.0,
+            amount: 300.0,
             ..Default::default()
         };
         (orderbook, order)
@@ -167,11 +166,12 @@ mod tests {
     #[test]
     fn can_scan_orders() {
         let (orderbook, order) = get_data();
-        let (_new_order, new_orderbook, trades) = scan_orders(&orderbook, order);
+        let (new_order, new_orderbook, trades) = scan_orders(&orderbook, order);
 
         for (_i, item) in new_orderbook.iter().enumerate(){
             assert_eq!(item.amount, item.amount_filled)
         }
+        assert_eq!(new_order.amount_filled, 250.0);
         assert_eq!(trades.len(), 2)
     }
 
@@ -181,8 +181,8 @@ mod tests {
             let n: u32 = 1;
             let mut orderbook: Vec<Order> = vec![];
             for x in 0..n {
-                let price: u32 = thread_rng().gen_range(4000, 4050);
-                let amount: u32 = thread_rng().gen_range(10, 300);
+                let price: f32 = thread_rng().gen_range(4000.0, 4050.0);
+                let amount: f32 = thread_rng().gen_range(10.0, 300.0);
                 let kind = rand_true_false();
                 let order = Order{
                     id: x,

@@ -29,5 +29,6 @@ config :binbase_backend,
   hashid_salt: "bhd7i7FPegcSqHlWxews",
   phx_token_salt: "user salt"
 
-  
+config :postgrex, :json_library, Jason
+
 import_config "#{Mix.env()}.exs"

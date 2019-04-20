@@ -5,7 +5,7 @@ defmodule BinbaseBackend.Repo.Migrations.CreateOrders do
     create table(:orders) do
       add :maker_id, references(:users)
       add :market_id, :integer
-      add :kind, :integer
+      add :kind, :boolean
       add :price, :float
       add :amount, :float
       add :amount_filled, :float, default: 0
