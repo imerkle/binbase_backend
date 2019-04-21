@@ -28,7 +28,7 @@ jobs:
     parallelism: 4
     docker:
       # specify the version you desire here
-      - image: circleci/elixir:latest
+      - image: dsslimshaddy/binbase_backend
         environment:  # environment variables for primary container
           MIX_ENV: test
 
