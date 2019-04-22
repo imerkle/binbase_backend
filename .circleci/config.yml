@@ -69,7 +69,7 @@ jobs:
            command: |
              source $HOME/.cargo/env
              rustup default nightly
-             mix do deps.get, compile  # get updated dependencies & compile them
+             mix do deps.get, compile
       - save_cache:  # generate and store mix cache
           key: v1-mix-cache-{{ .Branch }}-{{ checksum "mix.lock" }}
           paths: "deps"
@@ -91,6 +91,10 @@ jobs:
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
 
       # run tests!
-      - run: mix test
+      - run:
+           name: Cargo Path and test
+           command: |
+             source $HOME/.cargo/env
+             mix test
 #      - codecov/upload:
 #          file: coverage/*.json
