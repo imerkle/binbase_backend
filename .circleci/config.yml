@@ -52,12 +52,6 @@ jobs:
       - checkout  # check out source code to working directory
 
       - run: curl https://sh.rustup.rs -sSf | sh -s -- -y
-      - run:
-           name: Print rustc and cargo versions
-           command: |
-             source $HOME/.cargo/env
-             rustc --version
-             cargo --version
       - run: mix local.hex --force  # install Hex locally (without prompt)
       - run: mix local.rebar --force  # fetch a copy of rebar (without prompt)
       - restore_cache:  # restores saved mix cache
@@ -71,9 +65,10 @@ jobs:
             - v1-build-cache-{{ .Branch }}
             - v1-build-cache
       - run:
-           name: Print rustc and cargo versions
+           name: Cargo Path, rustc nightly and compile
            command: |
              source $HOME/.cargo/env
+             rustup default nightly
              mix do deps.get, compile  # get updated dependencies & compile them
       - save_cache:  # generate and store mix cache
           key: v1-mix-cache-{{ .Branch }}-{{ checksum "mix.lock" }}
