@@ -9,6 +9,7 @@ services:
     build: .
     environment:
       - MIX_ENV=${MIX_ENV}
+      - HOME=/root
     ports:
       - "4000:4000"
     depends_on:
