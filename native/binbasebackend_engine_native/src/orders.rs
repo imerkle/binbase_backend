@@ -55,8 +55,8 @@ pub fn scan_orders(orderbook: &Vec<Order>, mut order: Order) -> (Order, Vec<Orde
                 trades.push(Trade{
                     price: head.price,
                     amount: trade_amount,
-                    buy_id: buy_id,
-                    sell_id: sell_id,
+                    buy_id,
+                    sell_id,
                 })
             }
             modified_orders.push(head);
@@ -88,7 +88,7 @@ impl Order{
         self.amount - self.amount_filled
     }
     fn update_amount(&self, amount_remaining: f32) -> Order{
-        let order = Order{
+        return Order{
             id: self.id,
             maker_id: self.maker_id,
             market_id: self.market_id,
@@ -98,7 +98,6 @@ impl Order{
             amount_filled: self.amount - amount_remaining,
             stop_price: self.stop_price,
         };
-        order
     }
 }
 
@@ -186,9 +185,9 @@ mod tests {
                 let kind = rand_true_false();
                 let order = Order{
                     id: x,
-                    kind: kind,
-                    price: price,
-                    amount: amount,
+                    kind,
+                    price,
+                    amount,
                     ..Default::default()
                 };
                 let (new_order, mut new_orderbook, _trades) = scan_orders(&orderbook, order);

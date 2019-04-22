@@ -1,7 +1,6 @@
 #![feature(test)] extern crate test;
-#[macro_use] extern crate rustler_codegen;
+extern crate rustler_codegen;
 #[macro_use] extern crate rustler;
-//#[macro_use] extern crate lazy_static;
 extern crate rand;
 
 mod atoms;

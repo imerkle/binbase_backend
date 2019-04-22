@@ -16,7 +16,8 @@ services:
       - rabbit1
     environment:
       WAIT_HOSTS: db:5432, rabbit1:5672
-    command: sh -c "/wait && /app/run.sh"   
+    command: sh -c "/wait && source $HOME/.cargo/env && rustup default nightly && mix ecto.reset && mix phx.server"
+    #/app/run.sh
     labels:
       kompose.service.expose: "binbase-backend.k8"
   rabbit1:
