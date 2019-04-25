@@ -9,7 +9,7 @@ defmodule BinbaseBackend.Repo.Migrations.CreateOrders do
       add :price, :float
       add :amount, :float
       add :amount_filled, :float, default: 0
-      add :stop_price, :float
+      add :active, :boolean, default: true
 
       timestamps()
     end

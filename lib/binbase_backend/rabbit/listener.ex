@@ -1,4 +1,4 @@
-defmodule BinbaseBackend.Engine.Listener do
+defmodule BinbaseBackend.Rabbit.Listener do
   use GenServer
   require Logger
 

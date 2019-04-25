@@ -1,4 +1,4 @@
-defmodule BinbaseBackend.Engine.Broadcaster do
+defmodule BinbaseBackend.Rabbit.Broadcaster do
   use GenServer
 
   @exchange "binbase_backend.exchange"

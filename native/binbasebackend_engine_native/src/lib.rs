@@ -1,4 +1,4 @@
-#![feature(test)] extern crate test;
+//#![feature(test)] extern crate test;
 extern crate rustler_codegen;
 #[macro_use] extern crate rustler;
 extern crate rand;

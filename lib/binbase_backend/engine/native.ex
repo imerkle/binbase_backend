@@ -11,13 +11,3 @@ defmodule BinbaseBackend.Engine.Native do
 
   def error, do: :erlang.nif_error(:nif_not_loaded)
 end
-
-defmodule BinbaseBackend.Trade do
-  defstruct price: nil,
-  amount: nil,
-  buy_id: nil,
-  sell_id: nil
-end
-
-
-

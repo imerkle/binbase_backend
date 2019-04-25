@@ -12,7 +12,7 @@ pub struct Order{
     price: f32,
     amount: f32,
     amount_filled: f32,
-    stop_price: f32,
+    active: bool,
 }
 
 #[derive(NifStruct)]
@@ -88,6 +88,9 @@ impl Order{
         self.amount - self.amount_filled
     }
     fn update_amount(&self, amount_remaining: f32) -> Order{
+        let amount_filled = self.amount - amount_remaining;
+        let active = if amount_filled == self.amount { false } else { true };
+
         return Order{
             id: self.id,
             maker_id: self.maker_id,
@@ -95,8 +98,8 @@ impl Order{
             kind: self.kind,
             price: self.price,
             amount: self.amount,
-            amount_filled: self.amount - amount_remaining,
-            stop_price: self.stop_price,
+            amount_filled,
+            active,
         };
     }
 }
@@ -132,7 +135,7 @@ pub fn update_orders(mut orderbook: Vec<Order>, modified_orders: Vec<Order>) -> 
 mod tests {
     use super::*;
     
-    use test::Bencher;
+    //use test::Bencher;
     fn get_data() -> (Vec<Order>, Order){
         let orderbook = vec![Order{
             id: 0,
@@ -173,7 +176,7 @@ mod tests {
         assert_eq!(new_order.amount_filled, 250.0);
         assert_eq!(trades.len(), 2)
     }
-
+/*
     #[bench]
     fn bench_scan_orders(b: &mut Bencher) {
         b.iter(|| {
@@ -197,4 +200,5 @@ mod tests {
             }            
         });        
     }
+    */
 }

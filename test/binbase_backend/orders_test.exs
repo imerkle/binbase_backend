@@ -33,11 +33,12 @@ defmodule BinbaseBackend.OrdersTest do
                 "kind" => true,
                 "price" => 6018,
                 "amount" => 50,
+                "trigger_at" => 6035
             },
         ]
 
         orders = Enum.map(orders, fn x ->
-            {:ok, order} = Orders.create_order(maker_id, token_rel, token_base, x["kind"], x["price"], x["amount"])
+            {:ok, order} = Orders.create_order(maker_id, token_rel, token_base, x["kind"], x["price"], x["amount"], x["trigger_at"])
             order
         end)
 

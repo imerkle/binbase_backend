@@ -36,8 +36,8 @@ defmodule BinbaseBackend.MainSupervisor do
     [
       # Start the Ecto repository
       supervisor(BinbaseBackend.Repo, []),
-      worker(BinbaseBackend.Engine.Broadcaster, []),
-      worker(BinbaseBackend.Engine.Listener, []),
+      worker(BinbaseBackend.Rabbit.Broadcaster, []),
+      worker(BinbaseBackend.Rabbit.Listener, []),
     ]
   end
 

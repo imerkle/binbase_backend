@@ -52,6 +52,10 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
 # Install packages
 RUN apk update && apk add --virtual build-dependencies build-base gcc wget git bash curl
 
+
+#install rust
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
+
 # Install Phoenix packages
 RUN mix local.hex --force
 RUN mix local.rebar --force
@@ -59,11 +63,6 @@ RUN mix archive.install --force https://github.com/phoenixframework/archives/raw
 
 COPY . /app
 WORKDIR /app
-
-#install rust
-RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
-#RUN source $HOME/.cargo/env
-#RUN rustup default nightly
 
 RUN mix deps.get
 
