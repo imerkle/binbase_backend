@@ -1,6 +1,6 @@
 defmodule BinbaseBackend.Orders do
 
-  import Ecto.Query, warn: false
+  import Ecto.Query
   alias BinbaseBackend.Order
   alias BinbaseBackend.Utils
   alias BinbaseBackend.Engine
@@ -18,8 +18,8 @@ defmodule BinbaseBackend.Orders do
     |> Ecto.Multi.insert(:order, order_changeset)
     |> Ecto.Multi.run(:trigger,fn repo, %{order: order} ->
       if !active do
-        trigger_changeset = Trigger.changeset(%Trigger{}, %{order_id: order.id, trigger_at: trigger_at })
-        repo.insert(trigger_changeset)
+        trigger_changeset = Trigger.changeset(%Trigger{}, %{market_id: market_id,order_id: order.id, trigger_at: trigger_at })
+        a = repo.insert(trigger_changeset)
       else
         {:ok, nil}
       end
@@ -30,10 +30,10 @@ defmodule BinbaseBackend.Orders do
         if result.trigger == nil do
           case Mix.env() do
             n when n in [:dev, :prod] -> Rabbit.Broadcaster.broadcast(result.order |> Jason.encode!(), "match")
-            :test-> Engine.match(result.order |> Jason.encode!() |> Jason.decode!())
-            {:ok, result.order}
+            :test-> Engine.match(result.order)
           end
         end
+        {:ok, result.order}
       #https://web.archive.org/web/20181127084359/https://medium.com/appunite-edu-collection/handling-failures-in-elixir-and-phoenix-12b70c51314b
       {:error, _failed_operation, failed_value, _changes} -> Errors.returnCode("cant_create_order")
     end
