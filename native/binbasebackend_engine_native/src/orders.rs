@@ -16,13 +16,15 @@ pub struct Order{
     active: bool,
 }
 
-#[derive(NifStruct)]
+#[derive(Default, NifStruct)]
 #[module = "BinbaseBackend.Trade"]
 pub struct Trade{
     price: f32,
     amount: f32,
     buy_id: u32,
     sell_id: u32,
+    fees_incl: f32,
+    fees_excl: f32,
 }
 #[derive(NifStruct)]
 #[module = "BinbaseBackend.Engine.Native"]
@@ -64,6 +66,7 @@ pub fn scan_orders(orderbook: &Vec<Order>, mut order: Order) -> (Order, Vec<Orde
                     amount: trade_amount,
                     buy_id,
                     sell_id,
+                    ..Default::default()
                 })
             }
             modified_orders.push(head);

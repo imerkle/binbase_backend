@@ -8,7 +8,7 @@ defmodule BinbaseBackendWeb.OrderControllerTest do
     price = 1000
     order = %{"token_rel" => "BTC", "token_base" => "USDT", "side" => false, "price" => price, "amount" => 500}
     response = conn
-    |> put_req_header("authorization", "Bearer #{token()}")
+    |> put_req_header("authorization", "Bearer #{token(500)}")
     |> post(Routes.order_path(conn, :create_order, order))
     |> json_response(200)
 
@@ -19,7 +19,7 @@ defmodule BinbaseBackendWeb.OrderControllerTest do
     price = "abcd"
     order = %{"token_rel" => "BTC", "token_base" => "USDT", "side" => false, "price" => price, "amount" => 500}
     response = conn
-    |> put_req_header("authorization", "Bearer #{token()}")
+    |> put_req_header("authorization", "Bearer #{token(500)}")
     |> post(Routes.order_path(conn, :create_order, order))
     |> json_response(200)
 

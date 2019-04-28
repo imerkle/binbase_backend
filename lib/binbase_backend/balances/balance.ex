@@ -38,7 +38,6 @@ defmodule BinbaseBackend.Balance do
     coin_ids = Enum.map(tickers, fn x->
       BinbaseBackend.Utils.coin_id(x)
     end)
-
     BinbaseBackend.Balance
     |> where([b], b.user_id == ^user_id and b.coin_id in ^coin_ids)
     |> BinbaseBackend.Repo.all()

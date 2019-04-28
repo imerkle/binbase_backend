@@ -2,6 +2,9 @@ defmodule BinbaseBackend.Order do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias BinbaseBackend.Utils
+  alias BinbaseBackend.Balance
+
   @derive {Jason.Encoder, only: [:id, :maker_id, :market_id, :side, :kind, :price, :amount, :amount_filled, :active, :updated_at, :inserted_at]}
   schema "orders" do
     field :maker_id, :integer
@@ -12,15 +15,46 @@ defmodule BinbaseBackend.Order do
     field :amount, :float
     field :amount_filled, :float, default: 0.0
     field :active, :boolean, default: true
+    field :token_rel, :string, virtual: true
+    field :token_base, :string, virtual: true
 
     timestamps()
   end
 
-  @required_fields ~w(maker_id market_id side kind price amount amount_filled)a
+  @required_fields ~w(maker_id market_id side kind price amount amount_filled token_rel token_base)a
 
-  @doc false
   def changeset(struct, attrs) do
     struct
     |> cast(attrs, @required_fields)
+  end
+  def new_changeset(struct, attrs) do
+    struct
+    |> cast(attrs, @required_fields)
+    |> put_market_id()
+    |> check_balance()
+  end
+  defp put_market_id(changeset) do
+    token_rel = get_field(changeset, :token_rel)
+    token_base = get_field(changeset, :token_base)
+    market_id = Utils.market_id(token_rel, token_base)
+
+    put_change(changeset, :market_id, market_id)
+  end
+  defp check_balance(changeset) do
+
+    token_rel = get_field(changeset, :token_rel)
+    token_base = get_field(changeset, :token_base)
+    side = get_field(changeset, :side)
+    maker_id = get_field(changeset, :maker_id)
+    amount = get_field(changeset, :amount)
+
+    ticker = if side == false, do: token_base, else: token_rel
+    balance = Balance.get_balance(maker_id, ticker)
+
+    if balance >= amount do
+      changeset
+    else
+      add_error(changeset, :title, "not_enough_balance", additional: "info")
+    end
   end
 end

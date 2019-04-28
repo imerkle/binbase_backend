@@ -4,7 +4,7 @@ defmodule BinbaseBackend.Factory do
 
   alias BinbaseBackend.Accounts.User
   alias BinbaseBackend.Order
-  alias BinbaseBackend.Orders
+  alias BinbaseBackend.Balance
 
   @pass "pass"
 
@@ -26,9 +26,13 @@ defmodule BinbaseBackend.Factory do
   def insert_user() do
     build(:user) |> set_password() |> insert
   end
-  def token() do
+  def token(fill_balance \\ 0) do
     user = insert_user()
     {:ok, u} = BinbaseBackend.Accounts.Users.sign_in(user.email, user.password)
+    if fill_balance > 0 do
+      {:ok, _} = Balance.insert_balance(user.id, "BTC", fill_balance)
+      {:ok, _} = Balance.insert_balance(user.id, "USDT", fill_balance)
+    end
     u.access_token
   end
 
@@ -36,7 +40,8 @@ defmodule BinbaseBackend.Factory do
 
   def order_factory do
         %Order{
-            market_id: 1,
+            token_rel: "BTC",
+            token_base: "USDT",
             side: false,
             price: 3500,
             amount: 500,

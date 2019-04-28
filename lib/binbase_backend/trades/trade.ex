@@ -14,13 +14,12 @@ defmodule BinbaseBackend.Trade do
     timestamps()
   end
 
-  @required_fields ~w(sell_id buy_id price amount)a
-  @optional_fields ~w(fees_incl fees_excl)a
+  @required_fields ~w(sell_id buy_id price amount fees_incl fees_excl)a
 
   @doc false
   def changeset(struct, attrs) do
     struct
-    |> cast(attrs, @required_fields, @optional_fields)
+    |> cast(attrs, @required_fields)
   end
 
   def insert_all(trades) do

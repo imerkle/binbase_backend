@@ -6,49 +6,48 @@ defmodule BinbaseBackend.Orders do
   alias BinbaseBackend.Engine
   alias BinbaseBackend.Rabbit
   alias BinbaseBackend.Trigger
-  alias BinbaseBackend.Balance
   alias BinbaseBackend.Errors
 
   @defaults %{kind: 0, trigger_at: nil}
   def create_order(maker_id, token_rel, token_base, side, price, amount, options \\ []) do
+
     %{kind: kind, trigger_at: trigger_at} = Enum.into(options, @defaults)
 
-    market_id = Utils.market_id(token_rel, token_base)
 
     active = if trigger_at != nil, do: false, else: true
-    order_changeset = Order.changeset(%Order{}, %{ maker_id: maker_id, market_id: market_id, side: side, kind: kind, price: price, amount: amount, active: active, })
+    order_changeset = Order.new_changeset(%Order{}, %{
+       maker_id: maker_id,
+       token_rel: token_rel,
+       token_base: token_base,
+       side: side,
+       kind: kind,
+       price: price,
+       amount: amount,
+       active: active
+      })
 
-    if side == false do
-      balance = Balance.get_balance(maker_id, token_base)
-    else
-      balance = Balance.get_balance(maker_id, token_rel)
-    end
-    if balance >= amount do
-      Ecto.Multi.new()
-      |> Ecto.Multi.insert(:order, order_changeset)
-      |> Ecto.Multi.run(:trigger,fn repo, %{order: order} ->
-        if !active do
-          trigger_changeset = Trigger.changeset(%Trigger{}, %{market_id: market_id,order_id: order.id, trigger_at: trigger_at })
-          repo.insert(trigger_changeset)
-        else
-          {:ok, nil}
-        end
-      end)
-      |> BinbaseBackend.Repo.transaction()
-      |> case do
-        {:ok, result} ->
-          if result.trigger == nil do
-            case Mix.env() do
-              n when n in [:dev, :prod] -> Rabbit.Broadcaster.broadcast(result.order |> Jason.encode!(), "match")
-              :test-> Engine.match(result.order)
-            end
-          end
-          {:ok, result.order}
-        #https://web.archive.org/web/20181127084359/https://medium.com/appunite-edu-collection/handling-failures-in-elixir-and-phoenix-12b70c51314b
-        {:error, _failed_operation, _failed_value, _changes} -> Errors.returnCode("cant_create_order")
+    Ecto.Multi.new()
+    |> Ecto.Multi.insert(:order, order_changeset)
+    |> Ecto.Multi.run(:trigger,fn repo, %{order: order} ->
+      if !active do
+        trigger_changeset = Trigger.changeset(%Trigger{}, %{market_id: order.market_id,order_id: order.id, trigger_at: trigger_at })
+        repo.insert(trigger_changeset)
+      else
+        {:ok, nil}
       end
-    else
-      Errors.returnCode("not_enough_balance")
+    end)
+    |> BinbaseBackend.Repo.transaction()
+    |> case do
+      {:ok, result} ->
+        if result.trigger == nil do
+          case Mix.env() do
+            n when n in [:dev, :prod] -> Rabbit.Broadcaster.broadcast(result.order |> Jason.encode!(), "match")
+            :test-> Engine.match(result.order)
+          end
+        end
+        {:ok, result.order}
+      #https://web.archive.org/web/20181127084359/https://medium.com/appunite-edu-collection/handling-failures-in-elixir-and-phoenix-12b70c51314b
+      {:error, _failed_operation, _failed_value, _changes} -> Errors.returnCode("cant_create_order")
     end
   end
   def get_orders(token_rel, token_base, side, lm \\ 20, active \\ true) do
