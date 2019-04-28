@@ -23,15 +23,22 @@ defmodule BinbaseBackend.Trigger do
   def hit(market_id, my_price, last_price) do
     {low_price, high_price} = if my_price > last_price, do: {last_price, my_price}, else: {my_price, last_price}
 
-    res = BinbaseBackend.Trigger
+
+    trigger_orders = BinbaseBackend.Trigger
     |> join(:inner, [t], o in BinbaseBackend.Order, on: t.order_id == o.id)
     |> where([t], t.market_id == ^market_id and t.trigger_at >= ^low_price and t.trigger_at <= ^high_price and t.active == true)
     |> select([t, o], {t, o})
     |> BinbaseBackend.Repo.all()
+
+    trigger_orders
     |> Enum.with_index()
-    |> Enum.reduce(Ecto.Multi.new(), fn ({ {trigger, order}, index}, multi) ->
+    |> Enum.reduce(Ecto.Multi.new(), fn ({ {trigger, _order}, index}, multi) ->
       trigger_changeset = changeset(trigger,%{active: false})
       Ecto.Multi.update(multi, Integer.to_string(index), trigger_changeset)
+    end)
+    |> BinbaseBackend.Repo.transaction()
+
+    Enum.map(trigger_orders, fn ({_trigger, order}) ->
       BinbaseBackend.Engine.match(order)
     end)
 

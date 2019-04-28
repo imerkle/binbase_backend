@@ -7,6 +7,8 @@ defmodule BinbaseBackend.Repo.Migrations.CreateTrades do
       add :buy_id, references(:orders)
       add :price, :float
       add :amount, :float
+      add :fees_incl, :float
+      add :fees_excl, :float
 
       timestamps()
     end

@@ -8,7 +8,8 @@ pub struct Order{
     id: u32,
     maker_id: u32,
     market_id: u16,
-    kind: bool,
+    side: bool,
+    kind: u8,
     price: f32,
     amount: f32,
     amount_filled: f32,
@@ -33,21 +34,27 @@ pub struct Outputs{
     pub modified_orders: Vec<Order>,
 }
 
+/*
+kind
+0 - limit order
+1 - stop trigger order
+2 - market order
+*/
 pub fn scan_orders(orderbook: &Vec<Order>, mut order: Order) -> (Order, Vec<Order>, Vec<Trade>){
     let mut trades: Vec<Trade> = vec![];
     let mut modified_orders: Vec<Order> = vec![];
 
     for (_i, head) in orderbook.iter().enumerate() {
-        if (order.kind == false && head.price <= order.price) || (order.kind == true && head.price >= order.price) {
+        if (order.side == false && head.price <= order.price) || (order.side == true && head.price >= order.price) || order.kind == 2 {
 
             let har = head.rem_amount();
             let oar =  order.rem_amount();
 
             let (orm, hrm, trade_amount) = extract(oar, har);
 
-
-            order = order.update_amount(orm);
-            let head = head.update_amount(hrm);
+            let hprice = if order.kind == 2 { Some(head.price) } else { None }; 
+            order = order.update_amount(orm, hprice);
+            let head = head.update_amount(hrm, None);
             
 
             let (buy_id, sell_id) = get_ids(&order, &head);
@@ -68,7 +75,7 @@ pub fn scan_orders(orderbook: &Vec<Order>, mut order: Order) -> (Order, Vec<Orde
     (order, modified_orders, trades)
 }
 fn get_ids(order: &Order, head: &Order) -> (u32, u32){
-    if order.kind == false {
+    if order.side == false {
         (order.id, head.id)
     }else{
         (head.id, order.id)
@@ -87,31 +94,30 @@ impl Order{
     fn rem_amount(&self) -> f32 {
         self.amount - self.amount_filled
     }
-    fn update_amount(&self, amount_remaining: f32) -> Order{
+    fn update_amount(&self, amount_remaining: f32, price: Option<f32>) -> Order{
         let amount_filled = self.amount - amount_remaining;
         let active = if amount_filled == self.amount { false } else { true };
-
+        let new_price = match price {
+            Some(x) => x,
+            None    => self.price,
+        };
         return Order{
-            id: self.id,
-            maker_id: self.maker_id,
-            market_id: self.market_id,
-            kind: self.kind,
-            price: self.price,
-            amount: self.amount,
             amount_filled,
             active,
+            price: new_price,
+            ..*self
         };
     }
 }
 
 pub fn add_order(mut orderbook: Vec<Order>, order: Order, tl: usize) -> Vec<Order>{
-    let kind = order.kind;
+    let side = order.side;
     if tl > 0 && order.amount != order.amount_filled {
         let order_a = [order];
         orderbook.splice(0..0, order_a.iter().cloned());
     } else if tl == 0 {
         orderbook.push(order);
-        if kind == false {
+        if side == false {
             orderbook.sort_by(|a, b| a.amount.partial_cmp(&b.amount).unwrap().reverse().then(a.id.partial_cmp(&b.id).unwrap()));
         }else {
             orderbook.sort_by(|a, b| a.amount.partial_cmp(&b.amount).unwrap().then(a.id.partial_cmp(&b.id).unwrap()));
@@ -139,14 +145,14 @@ mod tests {
     fn get_data() -> (Vec<Order>, Order){
         let orderbook = vec![Order{
             id: 0,
-            kind: false,
+            side: false,
             price: 4000.0,
             amount: 50.0,
             ..Default::default()
         },
         Order{
             id: 1,
-            kind: false,
+            side: false,
             price: 4010.0,
             amount: 200.0,
             ..Default::default()
@@ -154,7 +160,7 @@ mod tests {
         ];
         let order = Order{
             id: 2,
-            kind: true,
+            side: true,
             price: 4000.0,
             amount: 300.0,
             ..Default::default()
@@ -185,10 +191,10 @@ mod tests {
             for x in 0..n {
                 let price: f32 = thread_rng().gen_range(4000.0, 4050.0);
                 let amount: f32 = thread_rng().gen_range(10.0, 300.0);
-                let kind = rand_true_false();
+                let side = rand_true_false();
                 let order = Order{
                     id: x,
-                    kind,
+                    side,
                     price,
                     amount,
                     ..Default::default()

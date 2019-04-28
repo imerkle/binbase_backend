@@ -1,7 +1,8 @@
 defmodule BinbaseBackend.Utils do
-    
+
     @rel ["BTC","ETH"]
     @base ["USDT","BTC"]
+    @coins ["USDT","BTC", "ETH"]
 
     def market_id(token_rel, token_base) do
         ri = find_indexes(@rel, fn(x) -> x == token_rel end)
@@ -9,10 +10,14 @@ defmodule BinbaseBackend.Utils do
         x = Integer.to_string(ri) <> Integer.to_string(bi)
         x |> Integer.parse() |> elem(0)
     end
-    
+
+    def coin_id(ticker) do
+        find_indexes(@coins, fn(x) -> x == ticker end)
+    end
+
     defp find_indexes(collection, function) do
         do_find_indexes(collection, function)
-    end   
+    end
     defp do_find_indexes(collection, function, counter \\ 0)
     defp do_find_indexes([h|t], function, counter) do
         if function.(h) do
@@ -25,7 +30,4 @@ defmodule BinbaseBackend.Utils do
         nil
     end
 
-    def inverse_int(n) do
-        if n==0, do: 1, else: 0
-    end    
 end

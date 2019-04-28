@@ -5,7 +5,7 @@ defmodule BinbaseBackend.Repo.Migrations.CreateUsers do
     create table(:users) do
       add :email, :string
       add :encrypted_password, :string
-      add :invited_by, :integer, default: 0
+      add :invited_by, :integer
       add :phishing_code, :string
 
       timestamps()

@@ -6,7 +6,7 @@ defmodule BinbaseBackendWeb.OrderControllerTest do
 
   test "/create_order", %{conn: conn} do
     price = 1000
-    order = %{"token_rel" => "BTC", "token_base" => "USDT", "kind" => false, "price" => price, "amount" => 500}
+    order = %{"token_rel" => "BTC", "token_base" => "USDT", "side" => false, "price" => price, "amount" => 500}
     response = conn
     |> put_req_header("authorization", "Bearer #{token()}")
     |> post(Routes.order_path(conn, :create_order, order))
@@ -17,7 +17,7 @@ defmodule BinbaseBackendWeb.OrderControllerTest do
 
   test "invalid /create_order", %{conn: conn} do
     price = "abcd"
-    order = %{"token_rel" => "BTC", "token_base" => "USDT", "kind" => false, "price" => price, "amount" => 500}
+    order = %{"token_rel" => "BTC", "token_base" => "USDT", "side" => false, "price" => price, "amount" => 500}
     response = conn
     |> put_req_header("authorization", "Bearer #{token()}")
     |> post(Routes.order_path(conn, :create_order, order))

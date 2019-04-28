@@ -37,7 +37,7 @@ defmodule BinbaseBackend.Factory do
   def order_factory do
         %Order{
             market_id: 1,
-            kind: false,
+            side: false,
             price: 3500,
             amount: 500,
         }

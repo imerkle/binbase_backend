@@ -6,10 +6,9 @@ defmodule BinbaseBackend.Repo.Migrations.CreateTriggers do
       add :market_id, :integer
       add :order_id, references(:orders)
       add :trigger_at, :float
-      add :active, :boolean, default: true
+      add :active, :boolean
 
       timestamps()
     end
-
   end
 end

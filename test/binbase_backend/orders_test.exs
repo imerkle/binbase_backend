@@ -12,38 +12,54 @@ defmodule BinbaseBackend.OrdersTest do
         #sell orders created to match itselves
         orders = [
             %{
-                kind: false,
+                side: false,
                 price: 6001,
                 amount: 100,
-                trigger_at: 6010
+                #trigger_at: 6010
             },
+            #100
+            #0
             %{
-                kind: false,
+                side: false,
                 price: 6010,
                 amount: 200
             },
+            #300
+            #0
             %{
-                kind: true,
-                price: 6001,
+                side: true,
+                price: 90000,
                 amount: 500,
+                kind: 2,
             },
+            #0
+            #200
             %{
-                kind: false,
-                price: 6020,
+                side: false,
+                price: 6010,
                 amount: 250,
             },
+            #50
+            #0
             %{
-                kind: true,
-                price: 6018,
-                amount: 50,
+                side: true,
+                price: 6009,
+                amount: 155,
+            },
+            #0
+            #105
+            %{
+                side: false,
+                price: 0,
+                amount: 105,
+                kind: 2,
             },
         ]
 
         orders = Enum.map(orders, fn x ->
-            {:ok, order} = Orders.create_order(@maker_id, @token_rel, @token_base, x.kind, x.price, x.amount, Map.get(x, :trigger_at))
+            {:ok, order} = Orders.create_order(@maker_id, @token_rel, @token_base, x.side, x.price, x.amount, [kind: Map.get(x, :kind, 0), trigger_at: Map.get(x, :trigger_at)])
             order
         end)
-
         Enum.map(orders, fn x ->
             assert BinbaseBackend.Repo.get(BinbaseBackend.Order, x.id).amount_filled == x.amount
         end)

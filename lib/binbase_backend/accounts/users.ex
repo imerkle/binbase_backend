@@ -24,7 +24,7 @@ defmodule BinbaseBackend.Accounts.Users do
 
 		Ecto.Multi.new()
 		|> Ecto.Multi.insert(:user, user_changeset)
-    |> Ecto.Multi.run(:access_token,fn repo, %{user: user} ->
+    |> Ecto.Multi.run(:access_token,fn _repo, %{user: user} ->
 			token = Phoenix.Token.sign(BinbaseBackendWeb.Endpoint, @user_salt, user.id)
 			if Mix.env() == :prod do
 				Emails.Email.welcome_email(email) |> Emails.Mailer.deliver_later
@@ -35,7 +35,7 @@ defmodule BinbaseBackend.Accounts.Users do
 		|> case do
 			{:ok, result} ->
 				{:ok, %{id: result.user.id, access_token: result.access_token}}
-			{:error, _failed_operation, failed_value, _changes} -> Errors.returnCode("user_already_exists")
+			{:error, _failed_operation, _failed_value, _changes} -> Errors.returnCode("user_already_exists")
 		end
 	end
 

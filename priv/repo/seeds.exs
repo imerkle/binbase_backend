@@ -12,12 +12,15 @@
 
 alias BinbaseBackend.Orders
 alias BinbaseBackend.Accounts.Users
+alias BinbaseBackend.Balance
 
-{_, data} = Users.create_user(%{email: "a@b.com", password: "123", invite_code: ""})
+{:ok, user} = Users.create_user(%{email: "a@b.com", password: "123", invite_code: ""})
+
+Balance.insert_balance(user.id, "USDT", 10000)
 
 defmodule Mord do
     def make_order([head | tail], data) do
-        Orders.create_order(data.id, "BTC", "USDT", head["kind"], head["price"], head["amount"])
+        Orders.create_order(data.id, "BTC", "USDT", head["side"], head["price"], head["amount"])
         make_order(tail, data)
     end
     def make_order([], _) do
@@ -26,37 +29,37 @@ end
 
 x = [
     %{
-        "kind" => false,
+        "side" => false,
         "price" => 4000.04,
         "amount" => 0.435
     },
     %{
-        "kind" => false,
+        "side" => false,
         "price" => 4000.34,
         "amount" => 0.0455
     },
     %{
-        "kind" => false,
+        "side" => false,
         "price" => 4002.84,
         "amount" => 3.867
     },
     %{
-        "kind" => false,
+        "side" => false,
         "price" => 4011.67,
         "amount" => 1.545
     },
     %{
-        "kind" => false,
+        "side" => false,
         "price" => 4010.31,
         "amount" => 0.5
     },
     %{
-        "kind" => false,
+        "side" => false,
         "price" => 4000.04,
         "amount" => 1.5
     },
 ]
 if Mix.env() == :dev do
-    Mord.make_order(x, data)
+    Mord.make_order(x, user)
 end
 
