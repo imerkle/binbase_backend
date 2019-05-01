@@ -53,12 +53,11 @@ defmodule BinbaseBackend.Balance do
     Enum.with_index(balances)
     |> Enum.reduce(Ecto.Multi.new(), fn ({balance, index}, multi) ->
         index = Integer.to_string(index)
-
-        changeset = case get_balances(balance.user_id, [balance.coin_id], false) do
-          [] -> BinbaseBackend.Balance.changeset(%BinbaseBackend.Balance{},Map.from_struct(balance))
-          [b] -> changeset(b, %{amount: balance.amount})
-        end
-        Ecto.Multi.insert_or_update(multi, index, changeset)
+        Ecto.Multi.run(multi, index, fn repo, _ ->
+          {update_count, _} = from(b in BinbaseBackend.Balance, update: [inc: [amount_locked: ^balance.amount, amount: ^-balance.amount]], where: b.user_id == ^balance.user_id and b.coin_id == ^balance.coin_id)
+          |> repo.update_all([])
+          {:ok, update_count}
+        end)
     end)
     |> BinbaseBackend.Repo.transaction()
   end

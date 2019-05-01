@@ -7,7 +7,6 @@ defmodule BinbaseBackend.Orders do
   alias BinbaseBackend.Rabbit
   alias BinbaseBackend.Trigger
   alias BinbaseBackend.Errors
-  alias BinbaseBackend.Balance
 
   @defaults %{kind: 0, trigger_at: nil}
   def create_order(maker_id, token_rel, token_base, side, price, amount, options \\ []) do
@@ -40,7 +39,7 @@ defmodule BinbaseBackend.Orders do
       if trigger == nil do
         coin_id = (if side == false, do: token_base, else: token_rel ) |> Utils.coin_id()
 
-        {update_count, _} = from(b in Balance, update: [inc: [amount_locked: ^order.amount, amount: ^-order.amount]], where: b.user_id == ^order.maker_id and b.coin_id == ^coin_id)
+        {update_count, _} = from(b in BinbaseBackend.Balance, update: [inc: [amount_locked: ^order.amount, amount: ^-order.amount]], where: b.user_id == ^order.maker_id and b.coin_id == ^coin_id)
         |> repo.update_all([])
 
         if update_count > 0 do

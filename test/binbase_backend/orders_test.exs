@@ -56,14 +56,10 @@ defmodule BinbaseBackend.OrdersTest do
                 kind: 2,
             },
         ]
-        IO.inspect "nigga"
-        IO.inspect BinbaseBackend.Balance.get_balance(1, "BTC")
         orders = Enum.map(orders, fn x ->
             {:ok, order} = Orders.create_order(@maker_id, @token_rel, @token_base, x.side, x.price, x.amount, [kind: Map.get(x, :kind, 0), trigger_at: Map.get(x, :trigger_at)])
             order
         end)
-        IO.inspect "nigga"
-        IO.inspect BinbaseBackend.Balance.get_balance(1, "BTC")
         Enum.map(orders, fn x ->
             assert BinbaseBackend.Repo.get(BinbaseBackend.Order, x.id).amount_filled == x.amount
         end)
