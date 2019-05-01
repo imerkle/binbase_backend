@@ -5,7 +5,8 @@ defmodule BinbaseBackend.Engine.Native do
             orderbook_inverse: nil,
             trades: nil,
             order: nil,
-            modified_orders: nil
+            modified_orders: nil,
+            balances: nil
 
   def match_order(_order, _orderbook, _orderbook_inverse), do: error()
 

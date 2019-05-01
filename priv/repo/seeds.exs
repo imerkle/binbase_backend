@@ -16,8 +16,8 @@ alias BinbaseBackend.Balance
 
 {:ok, user} = Users.create_user(%{email: "a@b.com", password: "123", invite_code: ""})
 
-{:ok, _} = Balance.insert_balance(user.id, "USDT", 100000)
-{:ok, _} = Balance.insert_balance(user.id, "BTC", 100000)
+{:ok, _} = Balance.insert_balance(user.id, "USDT", 2000)
+{:ok, _} = Balance.insert_balance(user.id, "BTC", 2000)
 
 defmodule Mord do
     def make_order([head | tail], data) do

@@ -54,7 +54,7 @@ defmodule BinbaseBackend.Order do
     if balance >= amount do
       changeset
     else
-      add_error(changeset, :title, "not_enough_balance", additional: "info")
+      add_error(changeset, :amount, "not_enough_balance",[type: :float, validation: :changeset])
     end
   end
 end

@@ -19,7 +19,7 @@ fn match_order<'a>(env: Env<'a>, args: &[Term<'a>]) -> NifResult<Term<'a>> {
         new_order = order with amount_fulfilled
         new_orderbook_inverse = modified orders with ^orderbook_inverse
     */
-    let (new_order, new_orderbook_inverse, trades) = orders::scan_orders(&orderbook_inverse, order);
+    let (new_order, new_orderbook_inverse, trades, balances) = orders::scan_orders(&orderbook_inverse, order);
     let orderbook: Vec<orders::Order> = orders::add_order(orderbook, new_order.clone(), trades.len());
     let orderbook_inverse: Vec<orders::Order> = orders::update_orders(orderbook_inverse, new_orderbook_inverse.clone());
     Ok((atoms::ok(), orders::Outputs{
@@ -28,6 +28,7 @@ fn match_order<'a>(env: Env<'a>, args: &[Term<'a>]) -> NifResult<Term<'a>> {
         trades,
         order: new_order,
         modified_orders: new_orderbook_inverse,
+        balances,
     }).encode(env))
 }
 

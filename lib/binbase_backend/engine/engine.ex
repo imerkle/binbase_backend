@@ -1,6 +1,7 @@
 defmodule BinbaseBackend.Engine do
 
     alias BinbaseBackend.Trade
+    alias BinbaseBackend.Balance
     def match(order) do
 
         #|> Map.delete("inserted_at") |> Map.delete("updated_at")
@@ -25,6 +26,7 @@ defmodule BinbaseBackend.Engine do
         BinbaseBackend.Orders.update_all(outputs.modified_orders, outputs.order)
         #repo multi insert modified orders
         Trade.insert_all(outputs.trades)
+        Balance.update_all(outputs.balances)
 
         lt = length(outputs.trades)
         lo = length(outputs.orderbook)

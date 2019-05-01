@@ -7,8 +7,7 @@ defmodule BinbaseBackend.Utils do
     def market_id(token_rel, token_base) do
         ri = find_indexes(@rel, fn(x) -> x == token_rel end)
         bi = find_indexes(@base, fn(x) -> x == token_base end)
-        x = Integer.to_string(ri) <> Integer.to_string(bi)
-        x |> Integer.parse() |> elem(0)
+        ri + bi*100
     end
 
     def coin_id(ticker) do

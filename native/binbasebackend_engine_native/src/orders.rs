@@ -16,6 +16,13 @@ pub struct Order{
     active: bool,
 }
 
+/*
+kind
+0 - limit order
+1 - stop trigger order
+2 - market order
+*/
+
 #[derive(Default, NifStruct)]
 #[module = "BinbaseBackend.Trade"]
 pub struct Trade{
@@ -34,18 +41,38 @@ pub struct Outputs{
     pub trades: Vec<Trade>,
     pub order: Order,
     pub modified_orders: Vec<Order>,
+    pub balances: Vec<Balance>,
+}
+#[derive(NifStruct)]
+#[module = "BinbaseBackend.Balance"]
+pub struct Balance{
+    pub user_id: u32,
+    pub coin_id: usize,
+    pub amount: f32,
+    pub amount_locked: f32,
 }
 
-/*
-kind
-0 - limit order
-1 - stop trigger order
-2 - market order
-*/
-pub fn scan_orders(orderbook: &Vec<Order>, mut order: Order) -> (Order, Vec<Order>, Vec<Trade>){
+static REL: [&str; 2] = ["BTC","ETH"];
+static BASE: [&str; 2] = ["USDT","BTC"];
+static COINS: [&str; 3]  = ["USDT","BTC", "ETH"];
+
+fn get_coin_id(ticker: &str) -> usize {
+    return COINS.iter().position(|&r| r == ticker).unwrap();
+}
+fn get_tickers_from_market_id(market_id: u16) -> (&'static str, &'static str){
+    let tr = market_id%100;
+    let tb = (market_id - tr) / 100;
+    return (REL[tr as usize], BASE[tb as usize]);
+}
+
+pub fn scan_orders(orderbook: &Vec<Order>, mut order: Order) -> (Order, Vec<Order>, Vec<Trade>, Vec<Balance>){
     let mut trades: Vec<Trade> = vec![];
     let mut modified_orders: Vec<Order> = vec![];
-
+    let mut balances: Vec<Balance> = vec![];
+    
+    let (token_rel, token_base)  = get_tickers_from_market_id(order.market_id);
+    let (ticker_o, ticker_h) = if order.side == false { (token_base, token_rel) } else {(token_rel, token_base)};
+    let (coin_id_o, coin_id_h) = (get_coin_id(ticker_o), get_coin_id(ticker_h));
     for (_i, head) in orderbook.iter().enumerate() {
         if (order.side == false && head.price <= order.price) || (order.side == true && head.price >= order.price) || order.kind == 2 {
 
@@ -69,13 +96,31 @@ pub fn scan_orders(orderbook: &Vec<Order>, mut order: Order) -> (Order, Vec<Orde
                     ..Default::default()
                 })
             }
+
+            balances = add_or_insert(balances, order.maker_id, trade_amount, coin_id_o);
+            balances = add_or_insert(balances, head.maker_id, trade_amount, coin_id_h);
+            
             modified_orders.push(head);
             if orm == 0.0 {
                 break;
             }
         }
     }
-    (order, modified_orders, trades)
+    (order, modified_orders, trades, balances)
+}
+fn add_or_insert(mut balances: Vec<Balance>, user_id: u32, amount: f32, coin_id: usize) -> Vec<Balance>{
+    let mut found: bool = false;
+    for item in &mut balances {
+      if item.user_id == user_id {
+        item.amount = item.amount + amount;
+        found = true;
+        break;
+      }
+    }
+    if !found {
+        balances.push(Balance{user_id: user_id, coin_id: coin_id, amount: amount, amount_locked: -amount});
+    }
+    return balances;
 }
 fn get_ids(order: &Order, head: &Order) -> (u32, u32){
     if order.side == false {
@@ -177,13 +222,30 @@ mod tests {
     #[test]
     fn can_scan_orders() {
         let (orderbook, order) = get_data();
-        let (new_order, new_orderbook, trades) = scan_orders(&orderbook, order);
+        let (new_order, new_orderbook, trades, _balances) = scan_orders(&orderbook, order);
 
         for (_i, item) in new_orderbook.iter().enumerate(){
             assert_eq!(item.amount, item.amount_filled)
         }
         assert_eq!(new_order.amount_filled, 250.0);
         assert_eq!(trades.len(), 2)
+    }
+    
+    #[test]
+    fn check_ids(){
+        let (token_rel, token_base)  = get_tickers_from_market_id(1);
+        assert_eq!(token_rel, "ETH");
+        assert_eq!(token_base, "USDT");
+        
+        let (token_rel, token_base)  = get_tickers_from_market_id(101);
+        assert_eq!(token_rel, "ETH");
+        assert_eq!(token_base, "BTC");
+
+        let (coin_id_o, coin_id_h) = (get_coin_id(token_rel), get_coin_id(token_base));
+
+        assert_eq!(coin_id_o, 2);
+        assert_eq!(coin_id_h, 1);
+
     }
 /*
     #[bench]
