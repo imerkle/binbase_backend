@@ -1,4 +1,4 @@
-defmodule BinbaseBackend.Repo.Migrations.CreateTriggers do
+defmodule Exchange.Repo.Migrations.CreateTriggers do
   use Ecto.Migration
 
   def change do

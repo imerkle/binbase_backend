@@ -1,6 +1,4 @@
-# BinbaseBackend
-
-[![Build Status](https://travis-ci.com/imerkle/binbase_backend.svg?branch=master)](https://travis-ci.com/imerkle/binbase_backend)
+# Exchange
 
 To start your Phoenix server:
 

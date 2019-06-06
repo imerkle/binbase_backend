@@ -1,9 +1,9 @@
-defmodule BinbaseBackend.MixProject do
+defmodule Exchange.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :binbase_backend,
+      app: :exchange,
       version: "0.1.0",
       elixir: "~> 1.8",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -20,7 +20,7 @@ defmodule BinbaseBackend.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {BinbaseBackend.Application, []},
+      mod: {Exchange.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end

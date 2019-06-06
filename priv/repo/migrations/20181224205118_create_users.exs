@@ -1,4 +1,4 @@
-defmodule BinbaseBackend.Repo.Migrations.CreateUsers do
+defmodule Exchange.Repo.Migrations.CreateUsers do
   use Ecto.Migration
 
   def change do

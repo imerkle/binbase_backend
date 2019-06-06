@@ -5,18 +5,18 @@
 # Inside the script, you can read and write to any of your
 # repositories directly:
 #
-#     BinbaseBackend.Repo.insert!(%BinbaseBackend.SomeSchema{})
+#     Exchange.Repo.insert!(%Exchange.SomeSchema{})
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-alias BinbaseBackend.Orders
-alias BinbaseBackend.Accounts.Users
-alias BinbaseBackend.Balance
+alias Exchange.Orders
+alias Exchange.Accounts.Users
+alias Exchange.Balance
 
 {:ok, user} = Users.create_user(%{email: "a@b.com", password: "123", invite_code: ""})
 
-{:ok, _} = Balance.insert_balance(user.id, "USDT", 2000)
+{:ok, _} = Balance.insert_balance(user.id, "USDT", 20000)
 {:ok, _} = Balance.insert_balance(user.id, "BTC", 2000)
 
 defmodule Mord do

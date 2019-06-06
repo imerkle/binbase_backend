@@ -1,4 +1,4 @@
-defmodule BinbaseBackend.DataCase do
+defmodule Exchange.DataCase do
   @moduledoc """
   This module defines the setup for tests requiring
   access to the application's data layer.
@@ -16,20 +16,20 @@ defmodule BinbaseBackend.DataCase do
 
   using do
     quote do
-      alias BinbaseBackend.Repo
+      alias Exchange.Repo
 
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import BinbaseBackend.DataCase
+      import Exchange.DataCase
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(BinbaseBackend.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Exchange.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(BinbaseBackend.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Exchange.Repo, {:shared, self()})
     end
 
     :ok

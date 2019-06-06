@@ -2,7 +2,7 @@ use Mix.Config
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
-config :binbase_backend, BinbaseBackendWeb.Endpoint,
+config :exchange, ExchangeWeb.Endpoint,
   http: [port: 4002],
   server: false
 
@@ -10,7 +10,7 @@ config :binbase_backend, BinbaseBackendWeb.Endpoint,
 config :logger, level: :warn
 
 # Configure your database
-config :binbase_backend, BinbaseBackend.Repo,
+config :exchange, Exchange.Repo,
   username: "postgres",
   password: "",
   database: "binbase_backend_test",
@@ -19,7 +19,7 @@ config :binbase_backend, BinbaseBackend.Repo,
 
 config :argon2_elixir, t_cost: 2, m_cost: 8
 
-config :binbase_backend,
+config :exchange,
   rabbitmq_host: "localhost"
 
 #if !System.get_env("TRAVIS") do

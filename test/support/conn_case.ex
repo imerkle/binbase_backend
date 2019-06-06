@@ -1,4 +1,4 @@
-defmodule BinbaseBackendWeb.ConnCase do
+defmodule ExchangeWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -19,18 +19,18 @@ defmodule BinbaseBackendWeb.ConnCase do
     quote do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
-      alias BinbaseBackendWeb.Router.Helpers, as: Routes
+      alias ExchangeWeb.Router.Helpers, as: Routes
 
       # The default endpoint for testing
-      @endpoint BinbaseBackendWeb.Endpoint
+      @endpoint ExchangeWeb.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(BinbaseBackend.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Exchange.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(BinbaseBackend.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Exchange.Repo, {:shared, self()})
     end
 
     {:ok, conn: Phoenix.ConnTest.build_conn()}

@@ -7,15 +7,15 @@
 # General application configuration
 use Mix.Config
 
-config :binbase_backend,
-  ecto_repos: [BinbaseBackend.Repo]
+config :exchange,
+  ecto_repos: [Exchange.Repo]
 
 # Configures the endpoint
-config :binbase_backend, BinbaseBackendWeb.Endpoint,
+config :exchange, ExchangeWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "+2nW8L9TJBZHd2J87LvcxVTJVcqhF8++ncRR/ewPnQUDRB1u8cwq9tp9ZaJFJEVe",
-  render_errors: [view: BinbaseBackendWeb.ErrorView, accepts: ~w(json)],
-  pubsub: [name: BinbaseBackend.PubSub, adapter: Phoenix.PubSub.PG2]
+  render_errors: [view: ExchangeWeb.ErrorView, accepts: ~w(json)],
+  pubsub: [name: Exchange.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :warning,
@@ -25,7 +25,7 @@ config :logger, :warning,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
-config :binbase_backend,
+config :exchange,
   hashid_salt: "bhd7i7FPegcSqHlWxews",
   phx_token_salt: "user salt"
 

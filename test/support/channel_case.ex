@@ -1,4 +1,4 @@
-defmodule BinbaseBackendWeb.ChannelCase do
+defmodule ExchangeWeb.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -21,15 +21,15 @@ defmodule BinbaseBackendWeb.ChannelCase do
       use Phoenix.ChannelTest
 
       # The default endpoint for testing
-      @endpoint BinbaseBackendWeb.Endpoint
+      @endpoint ExchangeWeb.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(BinbaseBackend.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Exchange.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(BinbaseBackend.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Exchange.Repo, {:shared, self()})
     end
 
     :ok

@@ -1,4 +1,4 @@
-defmodule BinbaseBackend.Repo.Migrations.CreateTrades do
+defmodule Exchange.Repo.Migrations.CreateTrades do
   use Ecto.Migration
 
   def change do

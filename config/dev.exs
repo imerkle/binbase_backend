@@ -6,7 +6,7 @@ use Mix.Config
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
-config :binbase_backend, BinbaseBackendWeb.Endpoint,
+config :exchange, ExchangeWeb.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
@@ -48,14 +48,14 @@ config :phoenix, :stacktrace_depth, 20
 config :phoenix, :plug_init_mode, :runtime
 
 # Configure your database
-config :binbase_backend, BinbaseBackend.Repo,
+config :exchange, Exchange.Repo,
   username: "postgres",
   password: "postgres",
   database: "binbase_backend_dev",
   hostname: "localhost",
   pool_size: 10
 
-config :binbase_backend,
+config :exchange,
   rabbitmq_host: "rabbit1"
 
 if !System.get_env("CIRCLECI") do

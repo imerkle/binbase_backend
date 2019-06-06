@@ -1,10 +1,10 @@
-defmodule BinbaseBackend.Factory do
+defmodule Exchange.Factory do
   # with Ecto
-  use ExMachina.Ecto, repo: BinbaseBackend.Repo
+  use ExMachina.Ecto, repo: Exchange.Repo
 
-  alias BinbaseBackend.Accounts.User
-  alias BinbaseBackend.Order
-  alias BinbaseBackend.Balance
+  alias Exchange.Accounts.User
+  alias Exchange.Order
+  alias Exchange.Balance
 
   @pass "pass"
 
@@ -28,7 +28,7 @@ defmodule BinbaseBackend.Factory do
   end
   def token(fill_balance \\ 0) do
     user = insert_user()
-    {:ok, u} = BinbaseBackend.Accounts.Users.sign_in(user.email, user.password)
+    {:ok, u} = Exchange.Accounts.Users.sign_in(user.email, user.password)
     if fill_balance > 0 do
       {:ok, _} = Balance.insert_balance(user.id, "BTC", fill_balance)
       {:ok, _} = Balance.insert_balance(user.id, "USDT", fill_balance)
